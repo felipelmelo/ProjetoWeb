@@ -11,7 +11,7 @@ class ConexaoPDO {
 					$host = "localhost";
 					$user = "root";
 					$pass = "";
-					$dbname = "exercicio3";
+					$dbname = "projetoweb";
 				}
 				
 				$this->db = new PDO("mysql:host=$host; dbname=$dbname",$user,$pass);

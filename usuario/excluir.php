@@ -1,6 +1,6 @@
 <?php
 
-	require_once 'RepositorioPessoa.php';	
+	require_once 'RepositorioUsuario.php';	
 			
-	$pessoa = RepositorioPessoa::getInstancia()->excluir($_GET['id']);
+	$pessoa = RepositorioUsuario::getInstancia()->excluir($_GET['id']);
 ?>
