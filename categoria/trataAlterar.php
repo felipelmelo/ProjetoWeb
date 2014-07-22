@@ -6,7 +6,8 @@
 	$nome = strtolower($_POST['nome']); 
 	$Categoria = RepositorioCategoria::getInstancia()->VerificaCategoria($nome);
 	if(!$Categoria){
-		$Categoria = RepositorioCategoria::getInstancia()->inserir(null,$nome);
+
+		$Categoria = RepositorioCategoria::getInstancia()->Alterar($_POST['id'],$nome);
 	}
 	else 
 	{
