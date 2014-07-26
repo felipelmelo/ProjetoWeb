@@ -28,7 +28,7 @@ class RepositorioProduto {
 		}
 	}
 
-	private function retornarObejto($array){
+	private function retornaObjeto($array){
 		return new Produto($array["id_Produto"],
 							$array["nome_produto"],
 							$array["fabricante_produto"],
@@ -92,7 +92,7 @@ class RepositorioProduto {
 		try{
 			$retorno = null;
 			
-			$sql = "select * from categoria_produto";
+			$sql = "select * from produto";
 			$this->stm = $this->conn->prepare($sql);
 			$this->stm->execute();
 			
