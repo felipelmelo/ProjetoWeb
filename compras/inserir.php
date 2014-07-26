@@ -33,7 +33,7 @@
 		$nomeEstabelecimento = $objEstabelecimento->getNome();
 		
 		echo '<option value="' . $idEstabelecimento . '">' . $nomeEstabelecimento . '</option>';
-		}*/
+		}
 		?>
 		<br><input type = "Submit" value = "Enviar">
 		<input type = "reset" value = "Limpar"><br><br>
