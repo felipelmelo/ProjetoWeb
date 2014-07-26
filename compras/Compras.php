@@ -6,14 +6,14 @@ class Compras{
 	private $nome;
 	private $preco;
 	public function __construct($idProduto = null,$idEstabelecimento = null,preco =  null){
-		$this->id = $id;
+		$this->idProduto= $idProduto;
 		$this->nome = $nome;
 		$this->preco = $preco;
 		
 	}
 			
 	function setIdProduto($idProduto) {
-		$this->idProduto = $idProdutoidProduto;
+		$this->idProduto = $idProduto;
 	}
 	
 	function getIdProduto() {
