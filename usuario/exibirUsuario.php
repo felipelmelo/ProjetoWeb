@@ -2,10 +2,9 @@
 <html lang="pt">
 <head>
 	<meta charset="utf-8">
-	<title>Or&ccedil;amento F&aacute;cil</title>
+	<title>Usu&aacute;rio</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Orcamento Facil">
-
+	
 	<!-- The styles -->
 	<link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
 	<style type="text/css">
@@ -32,30 +31,15 @@
 	<link href='css/jquery.iphone.toggle.css' rel='stylesheet'>
 	<link href='css/opa-icons.css' rel='stylesheet'>
 	<link href='css/uploadify.css' rel='stylesheet'>
-
-	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-	<!-- The fav icon -->
-	<link rel="shortcut icon" href="img/favicon.ico">
-		
+	
 </head>
-
 <body>
 		<!-- topbar starts -->
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<a class="brand" href=""><span>Or&ccedilamento</span></a>
-				
-						
+				<a class="brand" href=""><span>Or&ccedil;amento</span></a>
+					
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -65,11 +49,10 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">Profile</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html">Logout</a></li>
+						<li><a href="../login/index.php">Logout</a></li>
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
-				
 			</div>
 		</div>
 	</div>
@@ -87,23 +70,15 @@
 						<li><a class="ajax-link" href="../categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
 						<li><a class="ajax-link" href="frmProduto.html"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
 						<li><a class="ajax-link" href="exibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
-						<li><a class="ajax-link" href="frmCompra.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
+						<li><a class="ajax-link" href="frmCompras.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
 						<li><a class="ajax-link" href="frmOrcamento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
 						<li><a class="ajax-link" href="frmRelatorio.html"><i class="icon-edit"></i><span class="hidden-tablet"> Rela&oacute;rio</span></a></li>
-						<li><a href="login.html"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
+						<li><a href="../login/index.php"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
 					</ul>
-					
 				</div><!--/.well -->
 			</div><!--/span-->
 			<!-- left menu ends -->
-			
-			<noscript>
-				<div class="alert alert-block span10">
-					<h4 class="alert-heading">Warning!</h4>
-					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
-				</div>
-			</noscript>
-			
+					
 			<div id="content" class="span10">
 			<!-- content starts -->
 			
@@ -111,36 +86,91 @@
 			<div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider"></span>
+						<a href="#">Home</a> <span class="divider">/</span>
+					</li>
+					<li>
+						<a href="#">Usuario</a>
 					</li>
 				</ul>
 			</div>
-			<div class="sortable row-fluid">
-				<a data-rel="tooltip" title="usuario" class="well span3 top-block" href="#">
-					<span class="icon32 icon-red icon-user"></span>
-					<div>Usu&aacute;rio</div>
-				</a>
-
-				<a data-rel="tooltip" title="categoria" class="well span3 top-block" href="#">
-					<span class="icon32 icon-color icon-star-on"></span>
-					<div>Categoria</div>
-				</a>
-
-				<a data-rel="tooltip" title="Produtos" class="well span3 top-block" href="#">
-					<span class="icon32 icon-color icon-cart"></span>
-					<div>Produtos</div>
-				</a>
-				
-				<a data-rel="tooltip" title="Estabelecimentos" class="well span3 top-block" href="#">
-					<span class="icon32 icon-color icon-envelope-closed"></span>
-					<div>Estabelecimentos</div>
-				</a><br/><br/><br/>
+			<?php
+			include_once 'repositorioUsuario.php';
 			
+			$retornoObjUsuario = RepositorioUsuario::getInstancia()->listar();
+			?>
+			<div class="row-fluid sortable">		
+				<div class="box span12">
+					<div class="box-header well" data-original-title>
+					
+					<a class="btn btn-success" href="frmUsuario.php"><i class="icon-edit icon-white"></i>Cadastrar</a> 
+											
+					</div>
+	
+					<div class="box-content">
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						  <thead>
+							  <tr>
+								  <th>Nome</th>
+								  <th>CPF</th>
+								  <th>Email</th>
+								  <th>Tipo de Usu&aacute;rio</th>
+								  <th>A&ccedil;&atilde;o</th>
+							  </tr>
+						  </thead>   
+						  <tbody>
+						  <?php 
+							include_once 'repositorioUsuario.php';
+							$retornoObjUsuario = RepositorioUsuario::getInstancia()->listar();
+							
+						    foreach ($retornoObjUsuario as $ObjUsuario){
+							
+						  ?>
+							<tr>
+								<td class="center"><?php echo $ObjUsuario->getNome(); ?></td>
+								<td class="center"><?php echo $ObjUsuario->getCpf(); ?></td>
+								<td class="center"><?php echo $ObjUsuario->getEmail(); ?></td>
+								<td><?php 
+									if ($ObjUsuario->getTipo_usuario() == 1){
+										echo "Administrador"; 
+									}else{
+										echo "Usuario";
+									} 
+								?></td>
+								
+								<td class="center">
+									<a class="btn btn-info" href="frmUsuarioAlterar.php?id=<?php echo $ObjUsuario->getId();?>">
+										<i class="icon-edit icon-white"></i>  
+										Alterar                                            
+									</a>
+									<a class="btn btn-danger" href="excluir.php?id=<?php echo $ObjUsuario->getId();?>"onClick="return confirm('Deseja realmente apagar este registo?')";>
+										<i class="icon-trash icon-white"></i> 
+										Excluir
+									</a>
+								</td>
+							</tr>
+							<?php } ?>
+							
+						  </tbody>
+					  </table>            
+					</div>
+				</div><!--/span-->
+			
+			</div><!--/row-->
+					
 			</div><!--/#content.span10-->
-				</div><!--/fluid-row-->
+		</div><!--/fluid-row-->
 				
 		<hr>
 
+		<div class="modal hide fade" id="myModal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Settings</h3>
+			</div>
+			<div class="modal-body">
+				<p>Here settings can be configured...</p>
+			</div>
+		</div>
 	
 	</div><!--/.fluid-container-->
 

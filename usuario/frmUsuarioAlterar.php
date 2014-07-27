@@ -2,10 +2,9 @@
 <html lang="pt">
 <head>
 	<meta charset="utf-8">
-	<title>Or&ccedil;amento F&aacute;cil</title>
+	<title>Cadastro Usu&aacute;rio</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Orcamento Facil">
-
+	
 	<!-- The styles -->
 	<link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
 	<style type="text/css">
@@ -53,24 +52,21 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href=""><span>Or&ccedilamento</span></a>
+				<a class="brand" href="index.html"> <span>Or&ccedil;amento</span></a>
+								
 				
-						
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-user"></i><span class="hidden-phone"> admin</span>
-						<span class="caret"></span>
-					</a>
+					
 					<ul class="dropdown-menu">
 						<li><a href="#">Profile</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html">Logout</a></li>
+						<li><a href="../login/index.php">Logout</a></li>
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
 				
-			</div>
+				</div>
 		</div>
 	</div>
 	<!-- topbar ends -->
@@ -84,16 +80,16 @@
 						<li class="nav-header hidden-tablet">Menu</li>
 						<li><a class="ajax-link" href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> Home</span></a></li>
 						<li><a class="ajax-link" href="../usuario/exibirUsuario.php"><i class="icon-edit"></i><span class="hidden-tablet"> Usu&aacute;rio</span></a></li>
-						<li><a class="ajax-link" href="../categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
+						<li><a class="ajax-link" href="./categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
 						<li><a class="ajax-link" href="frmProduto.html"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
-						<li><a class="ajax-link" href="exibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
-						<li><a class="ajax-link" href="frmCompra.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
+						<li><a class="ajax-link" href="frmEstabelecimento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
+						<li><a class="ajax-link" href="frmCompras.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
 						<li><a class="ajax-link" href="frmOrcamento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
 						<li><a class="ajax-link" href="frmRelatorio.html"><i class="icon-edit"></i><span class="hidden-tablet"> Rela&oacute;rio</span></a></li>
-						<li><a href="login.html"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
+						<li><a href="../login/index.php"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
 					</ul>
 					
-				</div><!--/.well -->
+				</div>
 			</div><!--/span-->
 			<!-- left menu ends -->
 			
@@ -111,38 +107,93 @@
 			<div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider"></span>
+						<a href="#">Home</a> <span class="divider">/</span>
+					</li>
+					<li>
+						<a href="#">Usu&aacute;rio</a>
 					</li>
 				</ul>
 			</div>
-			<div class="sortable row-fluid">
-				<a data-rel="tooltip" title="usuario" class="well span3 top-block" href="#">
-					<span class="icon32 icon-red icon-user"></span>
-					<div>Usu&aacute;rio</div>
-				</a>
-
-				<a data-rel="tooltip" title="categoria" class="well span3 top-block" href="#">
-					<span class="icon32 icon-color icon-star-on"></span>
-					<div>Categoria</div>
-				</a>
-
-				<a data-rel="tooltip" title="Produtos" class="well span3 top-block" href="#">
-					<span class="icon32 icon-color icon-cart"></span>
-					<div>Produtos</div>
-				</a>
-				
-				<a data-rel="tooltip" title="Estabelecimentos" class="well span3 top-block" href="#">
-					<span class="icon32 icon-color icon-envelope-closed"></span>
-					<div>Estabelecimentos</div>
-				</a><br/><br/><br/>
 			
-			</div><!--/#content.span10-->
-				</div><!--/fluid-row-->
-				
-		<hr>
+			<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-edit"></i> Formul&aacute;rio de Cadastro</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<form class="form-horizontal" method = "post" action = 'trataAlterar.php' onsubmit="return validacoes(this);">
+						  <fieldset>
+							<legend>Usu&aacute;rio</legend>
+							<h5>* Todos os campos s&otilde;o obrigat&oacute;rios</h5><br/>
+							
+							<?php require_once 'RepositorioUsuario.php';	
+							
+								$id = $_GET['id'];
+								
+								$retornoObjUsuario = RepositorioUsuario::getInstancia()->vizualizar($id);
+								
+								foreach ($retornoObjUsuario as $ObjUsuario){
+									
+							?>	
+							<input type="hidden" name="id" id="id" value="<?php echo $id;?>" />
+							<div class="control-group">
+							  <label class="control-label" for="typeahead">Nome: </label>
+							  <div class="controls">
+								<input type="text" name="nome" value = "<?php echo $ObjUsuario->getNome();?>" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
+							 </div>
+							</div>
+							
+							<div class="control-group">
+							  <label class="control-label" for="typeahead">CPF: </label>
+							  <div class="controls">
+								<input type="text" name = "Cpf" id = "Cpf" required onKeyPress="return Numero(event);" value = "<?php echo $ObjUsuario->getCpf();?> " class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
+							 </div>
+							</div>
+							
+							<div class="control-group">
+							  <label class="control-label" for="typeahead">Email: </label>
+							  <div class="controls">
+								<input type="text" name = "email" id = "email"  value = "<?php echo $ObjUsuario->getEmail();?>" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
+							 </div>
+							</div>
+							
+							<div class="control-group">
+							  <label class="control-label" name = "senha" id = "senha" for="typeahead">Senha: </label>
+							  <div class="controls">
+								<input type="password" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
+							 </div>
+							</div>
+							
+							<div class="control-group">
+							  <label class="control-label" for="typeahead">Tipo de Usu&aacute;rio: </label>
+							  <div class="controls">
+							  <select name = "tipo_usuario"  class="selectpicker">
+								   <option <?php if ($ObjUsuario->getTipo_usuario() == "1"){?>selected="selected"<?php }?> value="1">Administrador</option>
+								   <option <?php if ($ObjUsuario->getTipo_usuario() == "0"){?>selected="selected"<?php }?> value="2">usuario</option>
+			
+							 </select>
+							  <?php }?>
+							 </div>
+							</div>
+							
+							
+							<div class="form-actions">
+							  <button type="submit" class="btn btn-primary">Salvar</button>
+							  <button type="reset" class="btn">Cancelar</button>
+							</div>
+						  </fieldset>
+						</form>   
 
-	
-	</div><!--/.fluid-container-->
+					</div>
+				</div><!--/span-->
+
+			</div><!--/row-->
+
 
 	<!-- external javascript
 	================================================== -->
@@ -218,6 +269,76 @@
 	<!-- application script for Charisma demo -->
 	<script src="js/charisma.js"></script>
 	
+		
+	<script language="javascript" type="text/javascript">
+	
+	function validacoes(form){
+		
+		var filtro_mail = /^.+@.+\..{2,3}$/
+		if(!filtro_mail.test(form.email.value) || form.email.value == "")
+		{
+			alert("Preencha o seu e-mail corretamente.");
+			form.email.focus();
+			return false;
+		}
+
+		if(form.tipo_usuario[0].checked==false && form.tipo_usuario[1].checked==false)
+		{
+		alert("Seleciona o sexo.");
+		return false;
+		}
+		
+		var filtro_nome = /^[a-zA-Z]*$/
+		if(form.nome.value.length < 12 || form.nome.value == "")
+		{
+			alert("Preencha o seu nome corretamente.");
+			form.nome.focus();
+			return false;
+		}	
+	}
+
+	function Numero(e)
+	{
+		navegador = /msie/i.test(navigator.userAgent);
+	if (navegador)
+		var tecla = event.keyCode;
+	else
+	var tecla = e.which;
+
+	if(tecla > 47 && tecla < 58) // numeros de 0 a 9
+		return true;
+	else{
+		if (tecla != 8) // backspace
+			return false;
+		else
+			return true;
+		}
+	}
+
+	$("#senha").change(function(){
+		var filtro_senha = /.*?([0-9]).*?([0-9]).*?([0-9]).*?/
+			var filtro_senha_letra = /.*?([a-z]).*?([a-z]).*?([a-z]).*?/	
+			var filtro_senha_especial = /.*?([\!\@\#\$\%\&\*\_\-\+\?]).*?/
+				if(!filtro_senha.test(senha.value) || senha.value == "" || !filtro_senha_letra.test(senha.value) || !filtro_senha_especial.test(senha.value))
+				{
+					alert("A senha deve conter pelo menos 3 numeros 3 caracteres e 1 caracteres especial ");
+					senha.focus();
+					return false;
+				}else{
+					alert("Sua senha foi aprovada com sucesso");
+						
+					}
+	});
+	$("#Cpf").change(function(){
+		if(Cpf.value.length < 11 || Cpf.value == "" || Cpf.value.length > 11)
+		{
+			alert("O CPF deve ter 11 digitos");
+			Cpf.focus();
+			return false;
+		}
+		});
+	</script>
+		
 		
 </body>
 </html>

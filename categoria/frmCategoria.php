@@ -2,10 +2,9 @@
 <html lang="pt">
 <head>
 	<meta charset="utf-8">
-	<title>Or&ccedil;amento F&aacute;cil</title>
+	<title>Cadastro Categoria</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Orcamento Facil">
-
+	
 	<!-- The styles -->
 	<link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
 	<style type="text/css">
@@ -53,9 +52,28 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href=""><span>Or&ccedilamento</span></a>
+				<a class="brand" href="index.html"> <span>Or&ccedil;amento</span></a>
 				
-						
+				<!-- theme selector starts -->
+				<div class="btn-group pull-right theme-container" >
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+						<i class="icon-tint"></i><span class="hidden-phone"> Change Theme / Skin</span>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" id="themes">
+						<li><a data-value="classic" href="#"><i class="icon-blank"></i> Classic</a></li>
+						<li><a data-value="cerulean" href="#"><i class="icon-blank"></i> Cerulean</a></li>
+						<li><a data-value="cyborg" href="#"><i class="icon-blank"></i> Cyborg</a></li>
+						<li><a data-value="redy" href="#"><i class="icon-blank"></i> Redy</a></li>
+						<li><a data-value="journal" href="#"><i class="icon-blank"></i> Journal</a></li>
+						<li><a data-value="simplex" href="#"><i class="icon-blank"></i> Simplex</a></li>
+						<li><a data-value="slate" href="#"><i class="icon-blank"></i> Slate</a></li>
+						<li><a data-value="spacelab" href="#"><i class="icon-blank"></i> Spacelab</a></li>
+						<li><a data-value="united" href="#"><i class="icon-blank"></i> United</a></li>
+					</ul>
+				</div>
+				<!-- theme selector ends -->
+				
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -65,12 +83,12 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">Profile</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html">Logout</a></li>
+						<li><a href="../login/index.php">Logout</a></li>
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
 				
-			</div>
+				</div>
 		</div>
 	</div>
 	<!-- topbar ends -->
@@ -86,14 +104,14 @@
 						<li><a class="ajax-link" href="../usuario/exibirUsuario.php"><i class="icon-edit"></i><span class="hidden-tablet"> Usu&aacute;rio</span></a></li>
 						<li><a class="ajax-link" href="../categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
 						<li><a class="ajax-link" href="frmProduto.html"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
-						<li><a class="ajax-link" href="exibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
-						<li><a class="ajax-link" href="frmCompra.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
+						<li><a class="ajax-link" href="frmEstabelecimento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
+						<li><a class="ajax-link" href="frmCompras.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
 						<li><a class="ajax-link" href="frmOrcamento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
 						<li><a class="ajax-link" href="frmRelatorio.html"><i class="icon-edit"></i><span class="hidden-tablet"> Rela&oacute;rio</span></a></li>
-						<li><a href="login.html"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
+						<li><a href="../login/index.php"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
 					</ul>
 					
-				</div><!--/.well -->
+				</div>
 			</div><!--/span-->
 			<!-- left menu ends -->
 			
@@ -111,38 +129,48 @@
 			<div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider"></span>
+						<a href="#">Home</a> <span class="divider">/</span>
+					</li>
+					<li>
+						<a href="#">Categoria</a>
 					</li>
 				</ul>
 			</div>
-			<div class="sortable row-fluid">
-				<a data-rel="tooltip" title="usuario" class="well span3 top-block" href="#">
-					<span class="icon32 icon-red icon-user"></span>
-					<div>Usu&aacute;rio</div>
-				</a>
-
-				<a data-rel="tooltip" title="categoria" class="well span3 top-block" href="#">
-					<span class="icon32 icon-color icon-star-on"></span>
-					<div>Categoria</div>
-				</a>
-
-				<a data-rel="tooltip" title="Produtos" class="well span3 top-block" href="#">
-					<span class="icon32 icon-color icon-cart"></span>
-					<div>Produtos</div>
-				</a>
-				
-				<a data-rel="tooltip" title="Estabelecimentos" class="well span3 top-block" href="#">
-					<span class="icon32 icon-color icon-envelope-closed"></span>
-					<div>Estabelecimentos</div>
-				</a><br/><br/><br/>
 			
-			</div><!--/#content.span10-->
-				</div><!--/fluid-row-->
-				
-		<hr>
+			<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-edit"></i> Formul&aacute;rio de Cadastro</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<form class="form-horizontal" method = "post" action = 'trataInserir.php' onsubmit="return validacoes(this);">
+						  <fieldset>
+							<legend>Categoria</legend>
+							<h5>* Todos os campos s&otilde;o obrigat&oacute;rios</h5><br/>
+							
+							<div class="control-group">
+							  <label class="control-label" for="typeahead">Nome da Categoria: </label>
+							  <div class="controls">
+								<input type="text" name = "nome" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
+							 </div>
+							</div>
+													
+							<div class="form-actions">
+							  <button type="submit" class="btn btn-primary">Salvar</button>
+							  <button type="reset" class="btn">Cancelar</button>
+							</div>
+						  </fieldset>
+						</form>   
 
-	
-	</div><!--/.fluid-container-->
+					</div>
+				</div><!--/span-->
+
+			</div><!--/row-->
 
 	<!-- external javascript
 	================================================== -->
@@ -218,6 +246,20 @@
 	<!-- application script for Charisma demo -->
 	<script src="js/charisma.js"></script>
 	
+	
+	<script language="javascript" type="text/javascript">
+	
+	function validacoes(form){
 		
+				
+		var filtro_nome = /^[a-zA-Z]*$/
+		if(!filtro_nome.test(form.nome.value))
+		{
+			alert("Preencha o seu nome corretamente.");
+			form.nome.focus();
+			return false;
+		}
+	}
+	</script>
 </body>
 </html>
