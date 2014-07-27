@@ -18,25 +18,21 @@
 		<label>Data Produto:</label>
 		<input type="text" name="inclusao_dt_produto" id="inclusao_dt_produto" required><br><br>
 
-			<h3>Categoria</h3>
-							<select id="intIdPrograma" name="intIdPrograma" class="campo-cinza-padrao required" style="width:375px;" tabindex="4">
-							  <option value="<?php echo $objCategoria->getIdCategoria();?>">---</option>
-							  <?php 
-							  $arrayObjCategoria = ControladorCategoria::getInstancia()->listar();
-							  foreach ($arrayObjCategoria as $objCategoria){
-							  	$intIdCategoria = $objCategoria>getId();
-							  	$strNomeCategoria = $objCategoria->getNome();
 
-							  	if($objCategoriav->getIdCategoria() == $objCategoria->getId()){
-						  			$selected = 'selected="selected"';
-						  		}else{
-						  			$selected = '';
-						  		}
-						  		?>
-									<option value="<?php echo $objPrograma->getId();?>" <?php echo $selected;?>><?php echo $objCategoria->getNome();?></option>
-						  		<?php 
-							  } 
-						  ?>
+		<label>Categoria:</label>
+		<select id="id_categoria" name="id_categoria" required style="width:375px;" tabindex="4">
+		<option value="">---</option>
+		
+			<?php 
+				require_once '../categoria/RepositorioCategoria.php';
+				$retornoObjCategoria = RepositorioCategoria::getInstancia()->listar();		
+				foreach ($retornoObjCategoria as $objCategoria){
+				$intIdCategoria = $objCategoria->getId();
+				$strNomeCategoria = $objCategoria->getNome();
+				
+				echo '<option value="' . $intIdCategoria . '">' . $strNomeCategoria . '</option>';
+				}
+		?>
 			</select>
 		<br><input type= "Submit" value = "Enviar">
 		<input type ="reset" value = "Limpar"><br><br>
