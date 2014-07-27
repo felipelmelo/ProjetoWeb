@@ -69,7 +69,7 @@
 						<li><a class="ajax-link" href="frmUsuario.html"><i class="icon-edit"></i><span class="hidden-tablet"> Usu&aacute;rio</span></a></li>
 						<li><a class="ajax-link" href="frmCategoria.html"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
 						<li><a class="ajax-link" href="frmProduto.html"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
-						<li><a class="ajax-link" href="frmEstabelecimento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
+						<li><a class="ajax-link" href="exibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
 						<li><a class="ajax-link" href="frmCompras.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
 						<li><a class="ajax-link" href="frmOrcamento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
 						<li><a class="ajax-link" href="frmRelatorio.html"><i class="icon-edit"></i><span class="hidden-tablet"> Rela&oacute;rio</span></a></li>
