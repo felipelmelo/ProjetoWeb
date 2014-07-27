@@ -49,7 +49,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">Profile</a></li>
 						<li class="divider"></li>
-						<li><a href="login.html">Logout</a></li>
+						<li><a href="../login/index.php">Logout</a></li>
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
@@ -66,14 +66,14 @@
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li class="nav-header hidden-tablet">Menu</li>
 						<li><a class="ajax-link" href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> Home</span></a></li>
-						<li><a class="ajax-link" href="frmUsuario.html"><i class="icon-edit"></i><span class="hidden-tablet"> Usu&aacute;rio</span></a></li>
-						<li><a class="ajax-link" href="exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
+						<li><a class="ajax-link" href="../usuario/exibirUsuario.php"><i class="icon-edit"></i><span class="hidden-tablet"> Usu&aacute;rio</span></a></li>
+						<li><a class="ajax-link" href="../categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
 						<li><a class="ajax-link" href="frmProduto.html"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
 						<li><a class="ajax-link" href="exibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
 						<li><a class="ajax-link" href="frmCompras.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
 						<li><a class="ajax-link" href="frmOrcamento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
 						<li><a class="ajax-link" href="frmRelatorio.html"><i class="icon-edit"></i><span class="hidden-tablet"> Rela&oacute;rio</span></a></li>
-						<li><a href="login.html"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
+						<li><a href="../login/index.php"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
 					</ul>
 				</div><!--/.well -->
 			</div><!--/span-->
@@ -94,9 +94,9 @@
 				</ul>
 			</div>
 			<?php
-			include_once 'repositorioEstabelecimento.php';
+			include_once 'repositorioCategoria.php';
 			
-			$retornoObjEstabelecimento = RepositorioEstabelecimento::getInstancia()->listar();
+			$retornoObjCategoria = RepositorioCategoria::getInstancia()->listar();
 			?>
 			<div class="row-fluid sortable">		
 				<div class="box span12">
@@ -123,14 +123,14 @@
 							
 						  ?>
 							<tr>
-								<td class="center"><?php echo $ObjCategoria->getNomeFantasia(); ?></td>
+								<td class="center"><?php echo $ObjCategoria->getNome(); ?></td>
 								
 								<td class="center">
 									<a class="btn btn-info" href="frmCategoriaAlterar.php?id=<?php echo $ObjCategoria->getId();?>">
 										<i class="icon-edit icon-white"></i>  
 										Alterar                                            
 									</a>
-									<a class="btn btn-danger" href="excluirDados.php?id=<?php echo $ObjCategoria->getId();?>"onClick="return confirm('Deseja realmente apagar este registo?')";>
+									<a class="btn btn-danger" href="excluir.php?id=<?php echo $ObjCategoria->getId();?>"onClick="return confirm('Deseja realmente apagar este registo?')";>
 										<i class="icon-trash icon-white"></i> 
 										Excluir
 									</a>

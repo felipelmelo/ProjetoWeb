@@ -37,7 +37,7 @@
 			$this->stm->bindValue(":nome", $objCategoria->getNome());
 			$this->stm->execute();
 			
-			header("Location: listar.php");
+			header("Location: exibirCategoria.php");
 			
 					
 			}catch(PDOException$e){
@@ -60,7 +60,7 @@
 			$this->stm->bindValue(":nome", $objCategoria->getNome());
 			$this->stm->execute();
 			
-			header("Location: listar.php");
+			header("Location: exibirCategoria.php");
 			
 					
 		}catch(PDOException$e){
@@ -79,7 +79,7 @@
 			$this->stm->bindValue(":id", $objCategoria->getId());
 			$this->stm->execute();
 
-			header("Location: listar.php");
+			header("Location: exibirCategoria.php");
 			
 		}catch(PDOException$e){
 			echo $e->getMessage();
@@ -136,7 +136,7 @@
 			
 			$objCategoria = new Categoria(null,$nome);
 			
-			$sql = "select * from categoria_produto where nome_categoria like :nome_categoria";
+			$sql = "select * from categoria_produto where nome_categoria = :nome_categoria";
 			
 			$this->stm = $this->conn->prepare($sql);
 			$this->stm->bindValue(":nome_categoria", $objCategoria->getNome());

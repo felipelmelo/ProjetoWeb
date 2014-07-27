@@ -42,7 +42,7 @@
 			
 			$this->stm->execute();
 			
-			header("Location: listar.php");
+			header("Location: exibirUsuario.php");
 			
 					
 			}catch(PDOException$e){
@@ -82,7 +82,7 @@
 			$this->stm->bindValue(":tipo_usuario", $objUsuario->getTipo_usuario());
 			$this->stm->execute();
 			
-			header("Location: listar.php");
+			header("Location: exibirUsuario.php");
 			
 					
 		}catch(PDOException$e){
@@ -101,7 +101,7 @@
 			$this->stm->bindValue(":id", $objUsuario->getId());
 			$this->stm->execute();
 
-			header("Location: listar.php");
+			header("Location: exibirUsuario.php");
 			
 		}catch(PDOException$e){
 			echo $e->getMessage();

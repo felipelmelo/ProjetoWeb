@@ -4,16 +4,23 @@
 
 	
 	$nome = strtolower($_POST['nome']); 
-	$Categoria = RepositorioCategoria::getInstancia()->VerificaCategoria($nome);
-	if(!$Categoria){
-
-		$Categoria = RepositorioCategoria::getInstancia()->Alterar($_POST['id'],$nome);
-	}
-	else 
-	{
-		echo "<script type=\"text/javascript\"> 
-			alert(\"Categoria j� cadastrada\"); 
-			window.location.href = \"listar.php\"; 			
-			</script>";
+	if(!is_numeric(nome) || $nome == ""){
+		$Categoria = RepositorioCategoria::getInstancia()->VerificaCategoria(utf8_decode($nome));
+		if(!$Categoria){
+	
+			$Categoria = RepositorioCategoria::getInstancia()->Alterar($_POST['id'],utf8_decode($nome));
+		}
+		else 
+		{
+			echo "<script type=\"text/javascript\"> 
+				alert(\"Categoria já cadastrada\"); 
+				window.location.href = \"exibirCategoria.php\"; 			
+				</script>";
+		}
+	}else{
+		"<script type=\"text/javascript\"> 
+				alert(\"Categoria já cadastrada\"); 
+				window.location.href = \"frmCategoriaAlterar.php\"; 			
+				</script>";
 	}
 ?>
