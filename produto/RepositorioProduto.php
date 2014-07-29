@@ -42,16 +42,16 @@ class RepositorioProduto {
 
 		try {
 			
-			$objProduto = new Produto(null, $id, $nome_produto, $fabricante_produto, $especificacao_prod, $data_prod, $id_categoria);
+			$objProduto = new Produto(null, $nome_produto, $fabricante_produto, $especificacao_prod, $data_prod, $id_categoria);
 			$query_insert = "INSERT INTO porduto (nome_produto, fabricante_produto, especificacao_prod, data_prod, id_categoria)
-						VALUES (:nome_produto, :fabricante_produto, :especificacao_prod, :inclusao_dt_produto, :id_Categoria) ";
+						VALUES (:nome_produto, :fabricante_produto, :especificacao_prod, :inclusao_dt_produto, :id_categoria) ";
 
 			$this->stm = $this->conn->prepare($query_insert);
 			$this->stm->binValue(":nome_produto", $objProduto->getNomeProd());
 			$this->stm->binValue(":fabricante_produto", $objProduto->getFabricanteProd());
 			$this->stm->binValue(":especificacao_prod", $objProduto->getEspecificacaoProd());
 			$this->stm->binValue(":inclusao_dt_produto", $objProduto->getDataProd());
-			$this->stm->binValue(":id_Categoria", $objProduto->getIdCategoria());
+			$this->stm->binValue(":id_categoria", $objProduto->getIdCategoria());
 
 			$this->execute();
 

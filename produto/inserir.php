@@ -2,7 +2,7 @@
 <head>
 <script type="text/javascript"src="externo.js"></script>
 </head>
-<form id="frmInserir"  method = "post" action = 'tratarInserir.php' onsubmit="return validacoes(this);">
+<form id="frmInserir"  method="post" action = 'tratarInserir.php' onsubmit="return validacoes(this);">
 	<fieldset>
 		
 		<br><br>	
