@@ -18,7 +18,6 @@
 		<label>Data Produto:</label>
 		<input type="text" name="inclusao_dt_produto" id="inclusao_dt_produto" required><br><br>
 
-
 		<label>Categoria:</label>
 		<select id="id_categoria" name="id_categoria" required style="width:375px;" tabindex="4">
 		<option value="">---</option>
@@ -28,6 +27,7 @@
 				$retornoObjCategoria = RepositorioCategoria::getInstancia()->listar();		
 				foreach ($retornoObjCategoria as $objCategoria){
 				$intIdCategoria = $objCategoria->getId();
+				echo "string".$$intIdCategoria;
 				$strNomeCategoria = $objCategoria->getNome();
 				
 				echo '<option value="' . $intIdCategoria . '">' . $strNomeCategoria . '</option>';
