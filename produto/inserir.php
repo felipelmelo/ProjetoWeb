@@ -27,15 +27,18 @@
 				$retornoObjCategoria = RepositorioCategoria::getInstancia()->listar();		
 				foreach ($retornoObjCategoria as $objCategoria){
 				$intIdCategoria = $objCategoria->getId();
-				echo "string".$$intIdCategoria;
 				$strNomeCategoria = $objCategoria->getNome();
 				
 				echo '<option value="' . $intIdCategoria . '">' . $strNomeCategoria . '</option>';
 				}
 		?>
 			</select>
-		<br><input type= "Submit" value = "Enviar">
-		<input type ="reset" value = "Limpar"><br><br>
+		<br>
+		<input type= "submit" value ="Enviar">
+		<input type ="reset" value ="Limpar"><br><br>
+
+		<br />
+		<a href="exibirDados.php">editar</a>
 		</fieldset>
 	</form>
 	

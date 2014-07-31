@@ -1,0 +1,21 @@
+<?php
+					require_once 'RepositorioProduto.php';
+					$id = $_GET['id'];
+					$retornaObjeto = RepositorioProduto::getInstancia()->listar($id);
+					foreach($retornaObjeto as $objProduto)
+					{
+
+					?>
+						<label>Nome Produto:</label>
+						<input type="text" name="nome_produto" id="nome_produto" required><br><br>
+
+						<label>Fabricante Produto:</label>
+						<input type="text" name="fabricante_produto" id="fabricante_produto" required><br><br>
+
+						<label>Especificacao Produto:</label>
+						<input type="text" name="especificacao_prod" id="especificacao_prod" required><br><br>
+
+						<label>Data Produto:</label>
+						<input type="text" name="inclusao_dt_produto" id="inclusao_dt_produto" required><br><br>
+
+							

@@ -43,7 +43,7 @@ class RepositorioProduto {
 		try {
 			
 			$objProduto = new Produto(null, $nome_produto, $fabricante_produto, $especificacao_prod, $data_prod, $id_categoria);
-			$query_insert = "INSERT INTO porduto (nome_produto, fabricante_produto, especificacao_prod, data_prod, id_categoria)
+			$query_insert = "INSERT INTO produto (nome_produto, fabricante_produto, especificacao_prod, inclusao_dt_produto, id_categoria)
 						VALUES (:nome_produto, :fabricante_produto, :especificacao_prod, :inclusao_dt_produto, :id_categoria) ";
 
 			$this->stm = $this->conn->prepare($query_insert);
@@ -63,6 +63,31 @@ class RepositorioProduto {
 		}
 	}
 
+	public function alterar($id,$nome_produto,$fabricante_produto,$especificacao_prod,$data_prod,$id_categoria)
+	{
+		try
+		{
+			$objEstabelecimento = new Estabelecimento($id,$nomeFantasia,$razaoSocial,$logradouro,$numero,$complemento,$bairro,$cidade,$estado);	
+			$sqlUpdate = "UPDATE produto SET nome_produto = :nome_produto, fabricante_produto = :fabricante_produto,
+			 inclusao_dt_produto = :inclusao_dt_produto,id_categoria = :id_categoria
+			WHERE id = :id_categoria";
+			
+			$this->stm = $this->conn->prepare($sqlUpdate);
+			$this->stm->bindValue(":id", $objProduto->getId());
+			$this->stm->bindValue(":nome_produto", $objProduto->getNomeProd());
+			$this->stm->bindValue(":fabricante_produto", $objProduto->getFabricanteProd());
+			$this->stm->binValue(":especificacao_prod", $objProduto->getEspecificacaoProd());
+			$this->stm->bindValue(":inclusao_dt_produto", $objProduto->getDataProd());
+			$this->stm->bindValue(":id_categoria", $objProduto->getIdCategoria());
+			
+			$this->stm->execute();
+			
+			header("Location: exibirDados.php");
+			
+		}catch(PDOException$e){
+			echo $e->getMessage();
+		}
+	}
 
 	public function verificarProduto($nome_produto)
 	{
@@ -105,6 +130,7 @@ class RepositorioProduto {
 			echo $e->getMessage();
 		}
 	}
+	
 
 }//fecha a classe
 ?>
