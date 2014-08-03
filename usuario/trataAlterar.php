@@ -1,14 +1,21 @@
 <?php
 
 	require_once 'RepositorioUsuario.php';	
-
 	
-	if (!eregi("^[a-z0-9_\.\-]+@[a-z0-9_\.\-]*[a-z0-9_\-]+\.[a-z]{2,4}$", $_POST["email"]) || is_null($_POST["email"])) { 
+	if (strlen($_POST["senha"])<7) { 
+			echo "<script type=\"text/javascript\"> 
+			alert(\"Senha invalida\"); 
+			window.location.href = \"exibirUsuario.php\"; 			
+			</script>";
+		}
+	
+	elseif (!eregi("^[a-z0-9_\.\-]+@[a-z0-9_\.\-]*[a-z0-9_\-]+\.[a-z]{2,4}$", $_POST["email"]) || is_null($_POST["email"])) { 
 			echo "<script type=\"text/javascript\"> 
 			alert(\"Email inválido\"); 
 			window.location.href = \"exibirUsuario.php\"; 			
 			</script>";
 		} 
+			
 	elseif ($_POST['nome'] == "" || strlen($_POST['nome'])<14){
 		echo "<script type=\"text/javascript\"> 
 			alert(\"Nome não pode ser nulo ou com menos de 14 caracteres\"); 

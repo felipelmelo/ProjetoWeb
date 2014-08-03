@@ -156,16 +156,16 @@
 							</div>
 							
 							<div class="control-group">
-							  <label class="control-label" name = "senha" id = "senha" for="typeahead">Senha: </label>
+							  <label class="control-label" id = "typeahead" for="typeahead">Senha: </label>
 							  <div class="controls">
-								<input type="password" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
+								<input type="password" class="span6 typeahead" name = "senha" id="typeahead"  data-provide="typeahead" data-items="4" >
 							 </div>
 							</div>
 							
 							<div class="control-group">
 							  <label class="control-label" for="typeahead">Tipo de Usu&aacute;rio: </label>
 							  <div class="controls">
-							  <select name = "tipo_usuario"  class="selectpicker">
+							  <select name = "tipo_usuario"  class="selectpicker span6">
 								   <option <?php if ($ObjUsuario->getTipo_usuario() == "1"){?>selected="selected"<?php }?> value="1">Administrador</option>
 								   <option <?php if ($ObjUsuario->getTipo_usuario() == "0"){?>selected="selected"<?php }?> value="2">usuario</option>
 			
@@ -308,7 +308,7 @@
 		}
 	}
 
-	$("#senha").change(function(){
+	/*$("#senha").change(function(){
 		var filtro_senha = /.*?([0-9]).*?([0-9]).*?([0-9]).*?/
 			var filtro_senha_letra = /.*?([a-z]).*?([a-z]).*?([a-z]).*?/	
 			var filtro_senha_especial = /.*?([\!\@\#\$\%\&\*\_\-\+\?]).*?/
@@ -321,7 +321,7 @@
 					alert("Sua senha foi aprovada com sucesso");
 						
 					}
-	});
+	});*/
 	$("#Cpf").change(function(){
 		if(Cpf.value.length < 11 || Cpf.value == "" || Cpf.value.length > 11)
 		{
