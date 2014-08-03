@@ -123,7 +123,7 @@
 							
 						  ?>
 							<tr>
-								<td class="center"><?php echo $ObjCategoria->getNome(); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjCategoria->getNome()); ?></td>
 								
 								<td class="center">
 									<a class="btn btn-info" href="frmCategoriaAlterar.php?id=<?php echo $ObjCategoria->getId();?>">

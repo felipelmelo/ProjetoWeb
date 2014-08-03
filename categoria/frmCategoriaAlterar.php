@@ -157,7 +157,7 @@
 							  <div class="control-group">
 							  <label class="control-label" for="typeahead">Nome da Categoria: </label>
 							  <div class="controls">
-								<input type="text" name = "nome" class="span6 typeahead" id="typeahead"  value = "<?php echo $ObjCategoria->getNome();?>" data-provide="typeahead" data-items="4" >
+								<input type="text" name = "nome" class="span6 typeahead" id="typeahead"  value = "<?php echo utf8_encode($ObjCategoria->getNome());?>" data-provide="typeahead" data-items="4" >
 							 </div>
 							</div>
 							<?php }?>						
@@ -253,8 +253,8 @@
 	function validacoes(form){
 		
 				
-		var filtro_nome = /^[a-zA-Z]*$/
-		if(!filtro_nome.test(form.nome.value) || form.nome.value == "")
+		
+		if(form.nome.value == "")
 		{
 			alert("Preencha o seu nome corretamente.");
 			form.nome.focus();

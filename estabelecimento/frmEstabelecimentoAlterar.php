@@ -133,21 +133,21 @@
 							<div class="control-group">
 							  <label class="control-label" for="nomeFantasia">Nome Fantasia: </label>
 							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="nomeFantasia" required value = "<?php echo $objEstabelecimento->getNomeFantasia();?>">
+								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="nomeFantasia" required value = "<?php echo utf8_encode($objEstabelecimento->getNomeFantasia());?>">
 							 </div>
 							</div>
 							
 							<div class="control-group">
 							  <label class="control-label" for="razaoSocial">Raz&atilde;o Social: </label>
 							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="razaoSocial" required value = "<?php echo $objEstabelecimento->getRazaoSocial();?>">
+								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="razaoSocial" required value = "<?php echo utf8_encode($objEstabelecimento->getRazaoSocial());?>">
 							 </div>
 							</div>
 							
 							<div class="control-group">
 							  <label class="control-label" for="logradouro">Logradouro: </label>
 							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="logradouro" required value = "<?php echo $objEstabelecimento->getLogradouro();?>" >
+								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="logradouro" required value = "<?php echo utf8_encode($objEstabelecimento->getLogradouro());?>" >
 							 </div>
 							</div>
 							
@@ -161,21 +161,21 @@
 							<div class="control-group">
 							  <label class="control-label" for="complemento">Complemento: </label>
 							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="complemento" value = "<?php echo $objEstabelecimento->getComplemento();?>">
+								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="complemento" value = "<?php echo utf8_encode($objEstabelecimento->getComplemento());?>">
 							 </div>
 							</div>
 							
 							<div class="control-group">
 							  <label class="control-label" for="bairro">Bairro: </label>
 							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="bairro" required value = "<?php echo $objEstabelecimento->getBairro();?>">
+								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="bairro" required value = "<?php echo utf8_encode($objEstabelecimento->getBairro());?>">
 							 </div>
 							</div>
 														
 							<div class="control-group">
 							  <label class="control-label" for="cidade">Cidade: </label>
 							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name = "cidade" required value = "<?php echo $objEstabelecimento->getCidade();?>">
+								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name = "cidade" required value = "<?php echo utf8_encode($objEstabelecimento->getCidade());?>">
 							 </div>
 							</div>
 							

@@ -221,9 +221,7 @@
 	
 	function validacoes(form){
 		
-				
-		var filtro_nome = /^[a-zA-Z]*$/
-		if(!filtro_nome.test(form.nome.value))
+		if(form.nome.value=="")
 		{
 			alert("Preencha o seu nome corretamente.");
 			form.nome.focus();

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
 <head>
 	<meta charset="utf-8">
@@ -130,14 +130,14 @@
 							
 						  ?>
 							<tr>
-								<td class="center"><?php echo $ObjEstabelecimento->getNomeFantasia(); ?></td>
-								<td class="center"><?php echo $ObjEstabelecimento->getRazaoSocial(); ?></td>
-								<td class="center"><?php echo $ObjEstabelecimento->getLogradouro(); ?></td>
-								<td class="center"><?php echo $ObjEstabelecimento->getNumero(); ?></td>
-								<td class="center"><?php echo $ObjEstabelecimento->getComplemento(); ?></td>
-								<td class="center"><?php echo $ObjEstabelecimento->getBairro(); ?></td>
-								<td class="center"><?php echo $ObjEstabelecimento->getCidade(); ?></td>
-								<td class="center" ><?php echo $ObjEstabelecimento->getEstado(); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getNomeFantasia()); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getRazaoSocial()); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getLogradouro()); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getNumero()); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getComplemento()); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getBairro()); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getCidade()); ?></td>
+								<td class="center" ><?php echo utf8_encode($ObjEstabelecimento->getEstado()); ?></td>
 								<td class="center">
 									<a class="btn btn-info" href="frmEstabelecimentoAlterar.php?id=<?php echo $ObjEstabelecimento->getId();?>">
 										<i class="icon-edit icon-white"></i>  

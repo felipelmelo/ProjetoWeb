@@ -126,7 +126,7 @@
 							
 						  ?>
 							<tr>
-								<td class="center"><?php echo $ObjUsuario->getNome(); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjUsuario->getNome()); ?></td>
 								<td class="center"><?php echo $ObjUsuario->getCpf(); ?></td>
 								<td class="center"><?php echo $ObjUsuario->getEmail(); ?></td>
 								<td><?php 

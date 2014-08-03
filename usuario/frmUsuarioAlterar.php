@@ -137,7 +137,7 @@
 							<div class="control-group">
 							  <label class="control-label" for="typeahead">Nome: </label>
 							  <div class="controls">
-								<input type="text" name="nome" value = "<?php echo $ObjUsuario->getNome();?>" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
+								<input type="text" name="nome" value = "<?php utf8_encode(echo $ObjUsuario->getNome());?>" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
 							 </div>
 							</div>
 							
