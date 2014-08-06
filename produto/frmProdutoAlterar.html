@@ -1,8 +1,8 @@
 <?php
 					require_once 'RepositorioProduto.php';
 					$id = $_GET['id'];
-					$retornaObjeto = RepositorioProduto::getInstancia()->listar($id);
-					foreach($retornaObjeto as $objProduto)
+					$retornaObjeto = RepositorioProduto::getInstancia()->visualizar(1);
+					foreach($retornaObjeto as $objProduto){
 					{
 
 					?>

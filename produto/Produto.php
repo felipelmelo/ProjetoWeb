@@ -10,7 +10,9 @@ class Produto {
 	private $data_prod;
 	private $id_categoria;
 	
-	function __construct($id = null, $nome_produto = null, $fabricante_produto = null, $especificacao_prod = null, $data_prod = null, $id_categoria = null)
+	function __construct($id = null, $nome_produto = null, 
+		$fabricante_produto = null, $especificacao_prod = null, 
+		$data_prod = null, $id_categoria = null)
 	{
 		$this->id = $id;
 		$this->nome_produto = $nome_produto;

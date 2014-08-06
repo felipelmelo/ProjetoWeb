@@ -32,7 +32,7 @@ class RepositorioProduto {
 		return new Produto($array["id_Produto"],
 							$array["nome_produto"],
 							$array["fabricante_produto"],
-							$array["especificacao_produto"],
+							$array["especificao_produto"],
 							$array["inclusao_dt_produto"],
 							$array["id_Categoria"]);
 	}
@@ -43,19 +43,19 @@ class RepositorioProduto {
 		try {
 			
 			$objProduto = new Produto(null, $nome_produto, $fabricante_produto, $especificacao_prod, $data_prod, $id_categoria);
-			$query_insert = "INSERT INTO produto (nome_produto, fabricante_produto, especificacao_prod, inclusao_dt_produto, id_categoria)
+			$query_insert = "INSERT INTO produto (nome_produto, fabricante_produto, especificao_produto, inclusao_dt_produto, id_categoria)
 						VALUES (:nome_produto, :fabricante_produto, :especificacao_prod, :inclusao_dt_produto, :id_categoria) ";
 
 			$this->stm = $this->conn->prepare($query_insert);
-			$this->stm->binValue(":nome_produto", $objProduto->getNomeProd());
-			$this->stm->binValue(":fabricante_produto", $objProduto->getFabricanteProd());
-			$this->stm->binValue(":especificacao_prod", $objProduto->getEspecificacaoProd());
-			$this->stm->binValue(":inclusao_dt_produto", $objProduto->getDataProd());
-			$this->stm->binValue(":id_categoria", $objProduto->getIdCategoria());
+			$this->stm->bindValue(":nome_produto", $objProduto->getNomeProd());
+			$this->stm->bindValue(":fabricante_produto", $objProduto->getFabricanteProd());
+			$this->stm->bindValue(":especificacao_prod", $objProduto->getEspecificacaoProd());
+			$this->stm->bindValue(":inclusao_dt_produto", $objProduto->getDataProd());
+			$this->stm->bindValue(":id_categoria", $objProduto->getIdCategoria());
 
-			$this->execute();
+			$this->stm->execute();
 
-			header("Location: listar.php");
+			//header("Location: listar.php");
 
 
 		} catch (PDOException $e) {
@@ -67,13 +67,13 @@ class RepositorioProduto {
 	{
 		try
 		{
-			$objEstabelecimento = new Estabelecimento($id,$nomeFantasia,$razaoSocial,$logradouro,$numero,$complemento,$bairro,$cidade,$estado);	
-			$sqlUpdate = "UPDATE produto SET nome_produto = :nome_produto, fabricante_produto = :fabricante_produto,
-			 inclusao_dt_produto = :inclusao_dt_produto,id_categoria = :id_categoria
-			WHERE id = :id_categoria";
+			$objProduto = new Produto($id,$nome_produto,$fabricante_produto,$especificacao_prod,$data_prod,$id_categoria);	
+			$sqlUpdate = "UPDATE produto SET nome_produto = :nome_produto, fabricante_produto = :fabricante_produto, 
+			especificao_produto = :especificacao_prod, inclusao_dt_produto = :inclusao_dt_produto,id_categoria = :id_categoria
+			WHERE id_Produto = :id_categoria";
 			
 			$this->stm = $this->conn->prepare($sqlUpdate);
-			$this->stm->bindValue(":id", $objProduto->getId());
+			$this->stm->bindValue(":id_Produto", $objProduto->getId());
 			$this->stm->bindValue(":nome_produto", $objProduto->getNomeProd());
 			$this->stm->bindValue(":fabricante_produto", $objProduto->getFabricanteProd());
 			$this->stm->binValue(":especificacao_prod", $objProduto->getEspecificacaoProd());
@@ -82,7 +82,7 @@ class RepositorioProduto {
 			
 			$this->stm->execute();
 			
-			header("Location: exibirDados.php");
+			header("Location: index.php"); //vai a pagina inicial
 			
 		}catch(PDOException$e){
 			echo $e->getMessage();
@@ -94,7 +94,7 @@ class RepositorioProduto {
 		try{
 			$retorno = null;
 			
-			$objProduto = new Produto(null,$nome_produto);
+			$objProduto = new Produto(null,$nome_produto,null,null,null,null);
 			
 			$sql = "SELECT * FROM produto where nome_produto like :nome_produto";
 			
@@ -117,7 +117,7 @@ class RepositorioProduto {
 		try{
 			$retorno = null;
 			
-			$sql = "select * from produto";
+			$sql = "SELECT * FROM produto";
 			$this->stm = $this->conn->prepare($sql);
 			$this->stm->execute();
 			
@@ -125,6 +125,54 @@ class RepositorioProduto {
 				$retorno[]=$this->retornaObjeto($result);
 			}
 			return $retorno;
+			
+		}catch(PDOException$e){
+			echo $e->getMessage();
+		}
+	}
+
+
+	public function visualizar($id)
+	{
+		try{
+		$retorno = null;
+		
+		$objProduto = new Produto($id,null,null,null,null,null);
+		
+		$sql = "SELECT * FROM produto WHERE id_Produto = :id";
+		
+		$this->stm = $this->conn->prepare($sql);
+		$this->stm->bindValue(":id_Produto", $objProduto->getId());
+		$this->stm->execute();
+		
+		while($result = $this->stm->fetch(PDO::FETCH_ASSOC))
+		{
+			$retorno[]=$this->retornaObjeto($result);
+		}
+		return $retorno;
+		
+		}
+		catch(PDOException $e)
+		{
+		//throw new MensagemTvException($e->getMessage());
+		}
+	}
+
+
+
+	public function excluir($id)	{
+		
+		try{
+			$objProduto = new Produto($id,null);
+		
+			$sql = "delete from produto where id_Produto = :id";
+		
+			$this->stm = $this->conn->prepare($sql);
+			$this->stm->bindValue(":id", $objProduto->getId());
+			$this->stm->execute();
+
+			//header("Location: listar.php");
+			echo "excluido com sucesso!";
 			
 		}catch(PDOException$e){
 			echo $e->getMessage();
