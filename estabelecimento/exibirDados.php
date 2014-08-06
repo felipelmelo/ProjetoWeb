@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
 <head>
 	<meta charset="utf-8">
-	<title>Cadastro Categoria</title>
+	<title>Or&ccedil;amento</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!-- The styles -->
@@ -31,42 +31,15 @@
 	<link href='../estrutura/css/jquery.iphone.toggle.css' rel='stylesheet'>
 	<link href='../estrutura/css/opa-icons.css' rel='stylesheet'>
 	<link href='../estrutura/css/uploadify.css' rel='stylesheet'>
-
-			
+	
 </head>
-
 <body>
 		<!-- topbar starts -->
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<a class="brand" href="index.html"> <span>Or&ccedil;amento</span></a>
-				
-				<!-- theme selector starts -->
-				<div class="btn-group pull-right theme-container" >
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-tint"></i><span class="hidden-phone"> Change Theme / Skin</span>
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" id="themes">
-						<li><a data-value="classic" href="#"><i class="icon-blank"></i> Classic</a></li>
-						<li><a data-value="cerulean" href="#"><i class="icon-blank"></i> Cerulean</a></li>
-						<li><a data-value="cyborg" href="#"><i class="icon-blank"></i> Cyborg</a></li>
-						<li><a data-value="redy" href="#"><i class="icon-blank"></i> Redy</a></li>
-						<li><a data-value="journal" href="#"><i class="icon-blank"></i> Journal</a></li>
-						<li><a data-value="simplex" href="#"><i class="icon-blank"></i> Simplex</a></li>
-						<li><a data-value="slate" href="#"><i class="icon-blank"></i> Slate</a></li>
-						<li><a data-value="spacelab" href="#"><i class="icon-blank"></i> Spacelab</a></li>
-						<li><a data-value="united" href="#"><i class="icon-blank"></i> United</a></li>
-					</ul>
-				</div>
-				<!-- theme selector ends -->
-				
+				<a class="brand" href=""><span>Or&ccedil;amento</span></a>
+					
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -80,8 +53,7 @@
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
-				
-				</div>
+			</div>
 		</div>
 	</div>
 	<!-- topbar ends -->
@@ -97,24 +69,16 @@
 						<li><a class="ajax-link" href="../usuario/exibirUsuario.php"><i class="icon-edit"></i><span class="hidden-tablet"> Usu&aacute;rio</span></a></li>
 						<li><a class="ajax-link" href="../categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
 						<li><a class="ajax-link" href="frmProduto.html"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
-						<li><a class="ajax-link" href="../estabelecimento/exibirEstabeleciemento.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
+						<li><a class="ajax-link" href="../estabelecimento/exibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
 						<li><a class="ajax-link" href="frmCompras.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
 						<li><a class="ajax-link" href="frmOrcamento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
 						<li><a class="ajax-link" href="frmRelatorio.html"><i class="icon-edit"></i><span class="hidden-tablet"> Rela&oacute;rio</span></a></li>
 						<li><a href="../login/index.php"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
 					</ul>
-					
-				</div>
+				</div><!--/.well -->
 			</div><!--/span-->
 			<!-- left menu ends -->
-			
-			<noscript>
-				<div class="alert alert-block span10">
-					<h4 class="alert-heading">Warning!</h4>
-					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
-				</div>
-			</noscript>
-			
+					
 			<div id="content" class="span10">
 			<!-- content starts -->
 			
@@ -125,53 +89,91 @@
 						<a href="#">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Categoria</a>
+						<a href="#">Estabelecimento</a>
 					</li>
 				</ul>
 			</div>
+			<?php
+			include_once 'repositorioEstabelecimento.php';
 			
-			<div class="row-fluid sortable">
+			$retornoObjEstabelecimento = RepositorioEstabelecimento::getInstancia()->listar();
+			?>
+			<div class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-edit"></i> Formul&aacute;rio altera&ccedil;&atilde;o de Cadastro</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
+					
+					<a class="btn btn-success" href="frmEstabelecimento.php"><i class="icon-plus icon-white"></i>Cadastrar</a> 
+											
 					</div>
+	
 					<div class="box-content">
-						<form class="form-horizontal" method = "post" action = 'trataAlterar.php' onsubmit="return validacoes(this);">
-						  <fieldset>
-							<legend>Categoria</legend>
-							<h5>* Todos os campos s&otilde;o obrigat&oacute;rios</h5><br/>
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						  <thead>
+							  <tr>
+								  <th>Nome Fantasia</th>
+								  <th>Raz&atilde;o Social</th>
+								  <th>Logradouro</th>
+								  <th>N&uacute;mero</th>
+								  <th>Complemento</th>
+								  <th>Bairro</th>
+								  <th>Cidade</th>
+								  <th>Estado</th>
+								  <th>A&ccedil;&atilde;o</th>
+							  </tr>
+						  </thead>   
+						  <tbody>
+						  <?php 
+							include_once 'repositorioEstabelecimento.php';
+							$retornoObjEstabelecimento = RepositorioEstabelecimento::getInstancia()->listar();
 							
-								<?php require_once 'RepositorioCategoria.php';	
-									$id = $_GET['id'];
-									$retornoObjCategoria = RepositorioCategoria::getInstancia()->vizualizar($id);
-									foreach ($retornoObjCategoria as $ObjCategoria){
-										
-								?>	
-								<input type="hidden" name="id" id="id" value="<?php echo $id;?>" />	
+						    foreach ($retornoObjEstabelecimento as $ObjEstabelecimento){
 							
-							  <div class="control-group">
-							  <label class="control-label" for="typeahead">Nome da Categoria: </label>
-							  <div class="controls">
-								<input type="text" name = "nome" class="span6 typeahead" id="typeahead"  value = "<?php echo utf8_encode($ObjCategoria->getNome());?>" data-provide="typeahead" data-items="4" >
-							 </div>
-							</div>
-							<?php }?>						
-							<div class="form-actions">
-							  <button type="submit" class="btn btn-primary">Salvar</button>
-							  <button type="reset" class="btn">Cancelar</button>
-							</div>
-						  </fieldset>
-						</form>   
-
+						  ?>
+							<tr>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getNomeFantasia()); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getRazaoSocial()); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getLogradouro()); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getNumero()); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getComplemento()); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getBairro()); ?></td>
+								<td class="center"><?php echo utf8_encode($ObjEstabelecimento->getCidade()); ?></td>
+								<td class="center" ><?php echo utf8_encode($ObjEstabelecimento->getEstado()); ?></td>
+								<td class="center">
+									<a class="btn btn-info" href="frmEstabelecimentoAlterar.php?id=<?php echo $ObjEstabelecimento->getId();?>">
+										<i class="icon-edit icon-white"></i>  
+										Alterar                                            
+									</a>
+									<a class="btn btn-danger" href="excluirDados.php?id=<?php echo $ObjEstabelecimento->getId();?>"onClick="return confirm('Deseja realmente apagar este registo?')";>
+										<i class="icon-trash icon-white"></i> 
+										Excluir
+									</a>
+								</td>
+							</tr>
+							<?php } ?>
+							
+						  </tbody>
+					  </table>            
 					</div>
 				</div><!--/span-->
-
+			
 			</div><!--/row-->
+					
+			</div><!--/#content.span10-->
+		</div><!--/fluid-row-->
+				
+		<hr>
+
+		<div class="modal hide fade" id="myModal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Settings</h3>
+			</div>
+			<div class="modal-body">
+				<p>Here settings can be configured...</p>
+			</div>
+		</div>
+	
+	</div><!--/.fluid-container-->
 
 	<!-- external javascript
 	================================================== -->
@@ -247,20 +249,6 @@
 	<!-- application script for Charisma demo -->
 	<!--<script src="js/charisma.js"></script>-->
 	
-	
-	<script language="javascript" type="text/javascript">
-	
-	function validacoes(form){
 		
-				
-		
-		if(form.nome.value == "")
-		{
-			alert("Preencha o seu nome corretamente.");
-			form.nome.focus();
-			return false;
-		}
-	}
-	</script>
 </body>
 </html>

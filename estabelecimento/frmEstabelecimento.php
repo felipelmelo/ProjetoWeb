@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
 	<meta charset="utf-8">
-	<title>Cadastro Categoria</title>
+	<title>Cadastro Estabelecimento</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!-- The styles -->
@@ -31,8 +31,7 @@
 	<link href='../estrutura/css/jquery.iphone.toggle.css' rel='stylesheet'>
 	<link href='../estrutura/css/opa-icons.css' rel='stylesheet'>
 	<link href='../estrutura/css/uploadify.css' rel='stylesheet'>
-
-			
+	
 </head>
 
 <body>
@@ -47,25 +46,7 @@
 				</a>
 				<a class="brand" href="index.html"> <span>Or&ccedil;amento</span></a>
 				
-				<!-- theme selector starts -->
-				<div class="btn-group pull-right theme-container" >
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-tint"></i><span class="hidden-phone"> Change Theme / Skin</span>
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" id="themes">
-						<li><a data-value="classic" href="#"><i class="icon-blank"></i> Classic</a></li>
-						<li><a data-value="cerulean" href="#"><i class="icon-blank"></i> Cerulean</a></li>
-						<li><a data-value="cyborg" href="#"><i class="icon-blank"></i> Cyborg</a></li>
-						<li><a data-value="redy" href="#"><i class="icon-blank"></i> Redy</a></li>
-						<li><a data-value="journal" href="#"><i class="icon-blank"></i> Journal</a></li>
-						<li><a data-value="simplex" href="#"><i class="icon-blank"></i> Simplex</a></li>
-						<li><a data-value="slate" href="#"><i class="icon-blank"></i> Slate</a></li>
-						<li><a data-value="spacelab" href="#"><i class="icon-blank"></i> Spacelab</a></li>
-						<li><a data-value="united" href="#"><i class="icon-blank"></i> United</a></li>
-					</ul>
-				</div>
-				<!-- theme selector ends -->
+				
 				
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
@@ -76,7 +57,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">Profile</a></li>
 						<li class="divider"></li>
-						<li><a href="../login/index.php">Logout</a></li>
+						<li><a href="login.html">Logout</a></li>
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
@@ -94,10 +75,10 @@
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li class="nav-header hidden-tablet">Menu</li>
 						<li><a class="ajax-link" href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> Home</span></a></li>
-						<li><a class="ajax-link" href="../usuario/exibirUsuario.php"><i class="icon-edit"></i><span class="hidden-tablet"> Usu&aacute;rio</span></a></li>
-						<li><a class="ajax-link" href="../categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
+						<li><a class="ajax-link" href="frmUsuario.html"><i class="icon-edit"></i><span class="hidden-tablet"> Usu&aacute;rio</span></a></li>
+						<li><a class="ajax-link" href="frmCategoria.html"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
 						<li><a class="ajax-link" href="frmProduto.html"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
-						<li><a class="ajax-link" href="../estabelecimento/exibirEstabeleciemento.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
+						<li><a class="ajax-link" href="exibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
 						<li><a class="ajax-link" href="frmCompras.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
 						<li><a class="ajax-link" href="frmOrcamento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
 						<li><a class="ajax-link" href="frmRelatorio.html"><i class="icon-edit"></i><span class="hidden-tablet"> Rela&oacute;rio</span></a></li>
@@ -108,13 +89,6 @@
 			</div><!--/span-->
 			<!-- left menu ends -->
 			
-			<noscript>
-				<div class="alert alert-block span10">
-					<h4 class="alert-heading">Warning!</h4>
-					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
-				</div>
-			</noscript>
-			
 			<div id="content" class="span10">
 			<!-- content starts -->
 			
@@ -124,16 +98,18 @@
 					<li>
 						<a href="#">Home</a> <span class="divider">/</span>
 					</li>
+					
 					<li>
-						<a href="#">Categoria</a>
+						<a href="#">Estabelecimento</a>
 					</li>
+					
 				</ul>
 			</div>
 			
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-edit"></i> Formul&aacute;rio altera&ccedil;&atilde;o de Cadastro</h2>
+						<h2><i class="icon-edit"></i> Formul&aacute;rio de Cadastro</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -141,38 +117,102 @@
 						</div>
 					</div>
 					<div class="box-content">
-						<form class="form-horizontal" method = "post" action = 'trataAlterar.php' onsubmit="return validacoes(this);">
+						<form class="form-horizontal" method="post" action = "inserirDados.php">
 						  <fieldset>
-							<legend>Categoria</legend>
-							<h5>* Todos os campos s&otilde;o obrigat&oacute;rios</h5><br/>
+							<legend>Estabelecimento</legend>
+							<h5>* Campos obrigat&oacute;rios</h5><br/>
 							
-								<?php require_once 'RepositorioCategoria.php';	
-									$id = $_GET['id'];
-									$retornoObjCategoria = RepositorioCategoria::getInstancia()->vizualizar($id);
-									foreach ($retornoObjCategoria as $ObjCategoria){
-										
-								?>	
-								<input type="hidden" name="id" id="id" value="<?php echo $id;?>" />	
-							
-							  <div class="control-group">
-							  <label class="control-label" for="typeahead">Nome da Categoria: </label>
+							<div class="control-group">
+							  <label class="control-label" for="nomeFantasia">Nome Fantasia*: </label>
 							  <div class="controls">
-								<input type="text" name = "nome" class="span6 typeahead" id="typeahead"  value = "<?php echo utf8_encode($ObjCategoria->getNome());?>" data-provide="typeahead" data-items="4" >
+								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="nomeFantasia" required>
 							 </div>
 							</div>
-							<?php }?>						
+							
+							<div class="control-group">
+							  <label class="control-label" for="razaoSocial">Raz&atilde;o Social*: </label>
+							  <div class="controls">
+								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="razaoSocial" required>
+							 </div>
+							</div>
+							
+							<div class="control-group">
+							  <label class="control-label" for="logradouro">Logradouro*: </label>
+							  <div class="controls">
+								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="logradouro" required>
+							 </div>
+							</div>
+							
+							<div class="control-group">
+							  <label class="control-label" for="numero">N&uacute;mero*: </label>
+							  <div class="controls">
+								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="numero" required>
+							 </div>
+							</div>
+							
+							<div class="control-group">
+							  <label class="control-label" for="complemento">Complemento: </label>
+							  <div class="controls">
+								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="complemento">
+							 </div>
+							</div>
+							
+							<div class="control-group">
+							  <label class="control-label" for="bairro">Bairro*: </label>
+							  <div class="controls">
+								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="bairro" required>
+							 </div>
+							</div>
+														
+							<div class="control-group">
+							  <label class="control-label" for="cidade">Cidade*: </label>
+							  <div class="controls">
+								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name = "cidade" required>
+							 </div>
+							</div>
+							
+							<div class="control-group">
+							<label class="control-label" for="estado">UF* </label>
+							<div class="controls">
+							  <select id="selectError" data-rel="chosen" name="estado" required>
+								<option>AC</option>
+								<option>AL</option>
+								<option>AP</option>
+								<option>AM</option>
+								<option>BA</option>
+								<option>CE</option>
+								<option>DF</option>
+								<option>ES</option>
+								<option>GO</option>
+								<option>MA</option>
+								<option>MT</option>
+								<option>MS</option>
+								<option>MG</option>
+								<option>PA</option>
+								<option>PB</option>
+								<option Selected>PE</option>
+								<option>PI</option>
+								<option>RJ</option>
+								<option>RN</option>
+								<option>RS</option>
+								<option>RO</option>
+								<option>RR</option>
+								<option>SC</option>
+								<option>SP</option>
+								<option>SE</option>
+								<option>TO</option>							
+							  </select>
+							</div>
+						
 							<div class="form-actions">
 							  <button type="submit" class="btn btn-primary">Salvar</button>
 							  <button type="reset" class="btn">Cancelar</button>
 							</div>
-						  </fieldset>
-						</form>   
-
-					</div>
-				</div><!--/span-->
-
-			</div><!--/row-->
-
+						  						  
+						  </div>
+						
+						</form>
+						
 	<!-- external javascript
 	================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -245,22 +285,6 @@
 	<!-- history.js for cross-browser state change on ajax -->
 	<script src="../estrutura/js/jquery.history.js"></script>
 	<!-- application script for Charisma demo -->
-	<!--<script src="js/charisma.js"></script>-->
-	
-	
-	<script language="javascript" type="text/javascript">
-	
-	function validacoes(form){
-		
-				
-		
-		if(form.nome.value == "")
-		{
-			alert("Preencha o seu nome corretamente.");
-			form.nome.focus();
-			return false;
-		}
-	}
-	</script>
+	<!--<script src="../estrutura/js/charisma.js"></script>-->
 </body>
 </html>
