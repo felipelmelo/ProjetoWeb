@@ -7,7 +7,7 @@
 	 $especificacao_prod = $_POST['especificacao_prod'];
 	 $data_prod = $_POST['inclusao_dt_produto'];
 	 $id_categoria = $_POST['id_categoria'];
-		
+	 
 	// $Produto = RepositorioProduto::getInstancia()->VerificarProduto($nome_produto);
 	// echo "azcac".$Produto;
 	// if(!$Produto){
