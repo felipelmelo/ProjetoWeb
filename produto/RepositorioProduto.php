@@ -69,7 +69,7 @@ class RepositorioProduto {
 		{
 			$objProduto = new Produto($id,$nome_produto,$fabricante_produto,$especificacao_prod,$data_prod,$id_categoria);	
 			$sqlUpdate = "UPDATE produto SET nome_produto = :nome_produto, fabricante_produto = :fabricante_produto, 
-			especificao_produto = :especificacao_prod, inclusao_dt_produto = :inclusao_dt_produto,id_categoria = :id_categoria
+			especificao_produto = :especificao_produto, inclusao_dt_produto = :inclusao_dt_produto,id_categoria = :id_categoria
 			WHERE id_Produto = :id_categoria";
 			
 			$this->stm = $this->conn->prepare($sqlUpdate);
@@ -103,7 +103,7 @@ class RepositorioProduto {
 			$this->stm->execute();
 			
 			while($result = $this->stm->fetch(PDO::FETCH_ASSOC)){
-				$retorno[]=$this->retornarObjeto($result);
+				$retorno[]=$this->retornaObjeto($result);  //retornaObjeto é o método criado mais acima.
 			}
 			return $retorno;
 			
@@ -117,7 +117,7 @@ class RepositorioProduto {
 		try{
 			$retorno = null;
 			
-			$sql = "SELECT * FROM produto";
+			$sql = "select * from produto";
 			$this->stm = $this->conn->prepare($sql);
 			$this->stm->execute();
 			
@@ -171,8 +171,7 @@ class RepositorioProduto {
 			$this->stm->bindValue(":id", $objProduto->getId());
 			$this->stm->execute();
 
-			//header("Location: listar.php");
-			echo "excluido com sucesso!";
+			header('Location:exibirProduto.php');
 			
 		}catch(PDOException$e){
 			echo $e->getMessage();

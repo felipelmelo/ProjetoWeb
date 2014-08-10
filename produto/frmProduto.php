@@ -142,7 +142,7 @@
 						</div>
 					</div>
 					<div class="box-content">
-						<form class="form-horizontal">
+						<form class="form-horizontal" method="post" action='tratarInserir.php' onsubmit="return validacoes(this);">
 						  <fieldset>
 							<legend>Produto</legend>
 							<h5>* Todos os campos s&otilde;o obrigat&oacute;rios</h5><br/>
@@ -150,29 +150,56 @@
 							<div class="control-group">
 							  <label class="control-label" for="typeahead">Nome do Produto: </label>
 							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
+								<input type="text" name="nome_produto" required class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
 							 </div>
 							</div>
-							
+
 							<div class="control-group">
-							  <label class="control-label" for="typeahead">Marca: </label>
+							  <label class="control-label" for="typeahead">Fabricante: </label>
 							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
+								<input type="text" name="fabricante_produto" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
 							 </div>
 							</div>
-							
+														
 							<div class="control-group">
-							  <label class="control-label" for="typeahead">Especifica&ccedil;&atilde;o: </label>
+							  <label class="control-label" for="typeahead">Especifica&ccedil;&atilde;o Produto: </label>
 							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
+								<input type="text" name="especificacao_prod" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
 							 </div>
-							</div
+							</div>
+
+							<div class="control-group">
+							  <label class="control-label" for="typeahead">Data Produto: </label>
+							  <div class="controls">
+								<input type="text" name="inclusao_dt_produto" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
+							 </div>
+							</div>
 
 							<div class="control-group">
 							  <label class="control-label" for="typeahead">Teste: </label>
 							  <div class="controls">
 								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
 							 </div>
+							</div>
+
+							<divclass="control-group">
+							<label class="control-label" for="typeahead">Categoria:</label>
+							<div class="controls">
+								<select id="id_categoria" name="id_categoria" required style="width:375px;" tabindex="4">
+								<option value="">Selecione uma categoria</option>
+								
+									<?php 
+										require_once '../categoria/RepositorioCategoria.php';
+										$retornoObjCategoria = RepositorioCategoria::getInstancia()->listar();		
+										foreach ($retornoObjCategoria as $objCategoria){
+										$intIdCategoria = $objCategoria->getId();
+										$strNomeCategoria = $objCategoria->getNome();
+										
+										echo '<option value="' . $intIdCategoria . '">' . $strNomeCategoria . '</option>';
+										}
+								?>
+								</select>
+							</div>
 							</div>
 							
 							<div class="form-actions">

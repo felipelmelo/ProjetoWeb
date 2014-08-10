@@ -70,7 +70,7 @@
 						<li><a class="ajax-link" href="../categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
 						<li><a class="ajax-link" href="exibirProduto.php"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
 						<li><a class="ajax-link" href="../estabelecimento/exibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
-						<li><a class="ajax-link" href="frmCompras.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
+						<li><a class="ajax-link" href="frmCompras.php"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
 						<li><a class="ajax-link" href="frmOrcamento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
 						<li><a class="ajax-link" href="frmRelatorio.html"><i class="icon-edit"></i><span class="hidden-tablet"> Rela&oacute;rio</span></a></li>
 						<li><a href="../login/index.php"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
@@ -94,9 +94,9 @@
 				</ul>
 			</div>
 			<?php
-			include_once 'RepositorioProduto.php';
+			//include_once 'RepositorioProduto.php';
 
-			$retornaObjeto = RepositorioProduto::getInstancia()->listar();
+			//$retornaObjeto = RepositorioProduto::getInstancia()->listar();
 
 			?>
 			<div class="row-fluid sortable">		
@@ -112,9 +112,10 @@
 						  <thead>
 							  <tr>
 								  <th>Nome</th>
-								  <th>A&ccedil;&atilde;o</th>
 								  <th>Fabricante</th>
 								  <th>Especifica&ccedil;&atilde;o</th>
+								  <th>Data</th>
+								  <th>A&ccedil;&atilde;o</th>
 							  </tr>
 						  </thead>   
 						  <tbody>
@@ -127,6 +128,9 @@
 						  ?>
 							<tr>
 								<td class="center"><?php echo utf8_encode($objProduto->getNomeProd()); ?></td>
+								<td class="center"><?php echo utf8_encode($objProduto->getFabricanteProd()); ?></td>
+								<td class="center"><?php echo utf8_encode($objProduto->getEspecificacaoProd()); ?></td>
+								<td class="center"><?php echo utf8_encode($objProduto->getDataProd()); ?></td>
 								
 								<td class="center">
 									<a class="btn btn-info" href="frmProdutoAlterar.php?id=<?php echo $objProduto->getId();?>">
