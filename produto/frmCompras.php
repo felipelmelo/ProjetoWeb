@@ -132,7 +132,7 @@
 								<td class="center">
 									<a class="btn btn-success" href="frmProdutoAlterar.php?id=<?php echo $objProduto->getId();?>">
 										<i class="icon-check icon-black"></i>  
-										Comprar                                            
+										Comprar
 									</a>
 									
 								</td>

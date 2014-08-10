@@ -156,7 +156,7 @@
 								<input type="hidden" name="id" id="id" value="<?php echo $id;?>" />	
 							
 							  <div class="control-group">
-							  <label class="control-label" for="typeahead">Nome da Categoria: </label>
+							  <label class="control-label" for="typeahead">Nome do Produto: </label>
 							  <div class="controls">
 								<input type="text" name = "nome" class="span6 typeahead" id="typeahead"  value = "<?php echo utf8_encode($ObjProduto->getNomeProd());?>" data-provide="typeahead" data-items="4" >
 							 </div>

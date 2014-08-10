@@ -173,6 +173,7 @@ class RepositorioProduto {
 
 			header('Location:exibirProduto.php');
 			
+			
 		}catch(PDOException$e){
 			echo $e->getMessage();
 		}

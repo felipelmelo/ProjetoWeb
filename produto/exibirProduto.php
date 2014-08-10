@@ -89,7 +89,7 @@
 						<a href="#">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Produto</a>
+						<a href="#">Produto 1</a>
 					</li>
 				</ul>
 			</div>
