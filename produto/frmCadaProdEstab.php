@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
 	<meta charset="utf-8">
-	<title>Cadastro Produto</title>
+	<title>Cadastro Produto Estabelecimento</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!-- The styles -->
@@ -134,7 +134,7 @@
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-edit"></i> Formul&aacute;rio de Cadastro</h2>
+						<h2><i class="icon-edit"></i> Formul&aacute;rio de Cadastro Produto Estabelecimento</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -142,71 +142,59 @@
 						</div>
 					</div>
 					<div class="box-content">
-						<form class="form-horizontal" method="post" action='tratarInserir.php' onsubmit="return validacoes(this);">
+						<form class="form-horizontal" method="post" action='tratarInserirProdEstab.php' onsubmit="return validacoes(this);">
 						  <fieldset>
-						  <!-- <legend>Produto</legend> -->
 							<legend>Produto</legend>
 							<h5>* Todos os campos s&otilde;o obrigat&oacute;rios</h5><br/>
-							
+																
 							<div class="control-group">
-							  <label class="control-label" for="typeahead">Nome do Produto: </label>
+							  <label class="control-label" for="typeahead">Pre&ccedil;o Produto: </label>
 							  <div class="controls">
-								<input type="text" name="nome_produto" required class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
+								<input type="text" id="preco" name="preco" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
 							 </div>
 							</div>
 
-							<div class="control-group">
-							  <label class="control-label" for="typeahead">Fabricante: </label>
-							  <div class="controls">
-								<input type="text" name="fabricante_produto" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
-							 </div>
-							</div>
-														
-							<div class="control-group">
-							  <label class="control-label" for="typeahead">Especifica&ccedil;&atilde;o Produto: </label>
-							  <div class="controls">
-								<input type="text" name="especificacao_prod" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
-							 </div>
-							</div>
 
 							<div class="control-group">
-							  <label class="control-label" for="typeahead">Data Produto: </label>
-							  <div class="controls">
-								<input type="text" name="inclusao_dt_produto" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
-							 </div>
-							</div>
-
-							<!-- <div class="control-group">
-							  <label class="control-label" for="typeahead">Teste: </label>
-							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
-							 </div>
-							</div> -->
-
-							<divclass="control-group">
-							<label class="control-label" for="typeahead">Categoria:</label>
+							<label class="control-label" for="typeahead">Produto:</label>
 							<div class="controls">
-								<select id="id_categoria" name="id_categoria" required style="width:375px;" tabindex="4">
-								<option value="">Selecione uma categoria</option>
+								<select id="id_produto" name="id_produto" required style="width:375px;" tabindex="4">
+								<option value="">Selecione uma produto</option>
 								
 									<?php 
-										require_once '../categoria/RepositorioCategoria.php';
-										$retornoObjCategoria = RepositorioCategoria::getInstancia()->listar();		
-										foreach ($retornoObjCategoria as $objCategoria){
-										$intIdCategoria = $objCategoria->getId();
-										$strNomeCategoria = $objCategoria->getNome();
+										require_once 'RepositorioProduto.php';
+										$retornoObjProduto = RepositorioProduto::getInstancia()->listar();		
+										foreach ($retornoObjProduto as $objProduto){
+										$intIdProduto = $objProduto->getId();
+										$strNomeProduto = $objProduto->getNomeProd();
 										
-										echo '<option value="' . $intIdCategoria . '">' . $strNomeCategoria . '</option>';
+										echo '<option value="' . $intIdProduto . '">' . $strNomeProduto . '</option>';
 										}
 								?>
 								</select>
 							</div>
 
-							<div>
-								<a href="frmCadaProdEstab.php">cadastre o preço</a>
+							<br />
+							<div class="control-group">
+							<label class="control-label" for="typeahead">Estabelecimento:</label>
+							<div class="controls">
+								<select id="id_estabelecimento" name="id_estabelecimento" required style="width:375px;" tabindex="4">
+								<option value="">Selecione uma estabelecimento</option>
+								
+									<?php 
+										require_once '../estabelecimento/repositorioEstabelecimento.php';
+										$retornoObjEstab = RepositorioEstabelecimento::getInstancia()->listar();		
+										foreach ($retornoObjEstab as $objEstab){
+										$idEstab = $objEstab->getId();
+										$nomeEstab = $objEstab->getNomeFantasia();
+										
+										echo '<option value="' . $idEstab . '">' . $nomeEstab . '</option>';
+										}
+								?>
+								</select>
 							</div>
-
-				</div> <!-- fecha div container -->
+													
+							</div> <!-- fecha div container -->
 
 							<br /><br />
 							<div class="form-actions">

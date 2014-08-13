@@ -77,6 +77,7 @@ class RepositorioProduto {
 			$this->stm->bindValue(":preco", $objProdutoEstab->getPreco());
 
 			$this->stm->execute();
+			////$this->stm->execute();
 
 			//header("Location: listar.php");
 

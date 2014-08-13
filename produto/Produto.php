@@ -11,6 +11,7 @@ class Produto {
 	private $id_categoria;
 	private $id_estabelecimento;
 	private $preco;
+	//private $tes;
 	
 	function __construct($id = null, $nome_produto = null, 
 		$fabricante_produto = null, $especificacao_prod = null, 
