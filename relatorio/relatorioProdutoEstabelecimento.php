@@ -95,21 +95,30 @@
 			</div>
 			<?php 
 			include_once 'repositorioRelatorio.php';
-			$retornoRelatorio = RepositorioRelatorio::getInstancia()->relProdutoEstabelecimento();
+			$retornoObjRelatorio = RepositorioRelatorio::getInstancia()->relProdutoEstabelecimento();
 			
-			$retorno
+			
 			?>
 			<div class="row-fluid sortable">		
 				<div class="box span12">
 					<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
-								  <th></th>
 								  <th>Nome do Produto</th>
 								  <th>Pre&ccedil;o</th>
 								  <th>Estabelecimento</th>
 							  </tr>
-						  </thead>   
+						  </thead>
+					<?php 
+						foreach ($retornoObjRelatorio as $ObjRelatorio){
+					?>	
+						<td class="center"><?php echo utf8_encode($ObjRelatorio->$ln['p.nome_produto']); ?></td>
+						<td class="center"><?php echo utf8_encode($ObjRelatorio->$ln['pe.preco_produto']); ?></td>
+						<td class="center"><?php echo utf8_encode($ObjRelatorio->$ln['e.nome_fantasia_estabelecimento']); ?></td>
+					
+					
+					<?php
+					}?>
 					</table>
 
 										

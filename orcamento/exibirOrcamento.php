@@ -112,6 +112,7 @@
 							  <tr>
 								  <th>Quantidade de produtos</th>
 								  <th>Produto</th>
+								  <th>Estabelecimento<th>
 								  <th>A&ccedil;&atilde;o</th>
 							  </tr>
 						  </thead>   
@@ -139,6 +140,26 @@
 									}
 									
 									?></td>
+									<?php 
+									
+									mysql_connect("localhost","root","");
+									mysql_select_db("orcamento");
+
+									$sql = "SELECT p.nome_produto,
+										   min(pe.preco_produto) as preco_produto,
+										   e.nome_fantasia_estabelecimento
+											FROM produto_has_estabelecimento pe
+											INNER JOIN produto p
+												on p.id_produto = pe.id_produto
+											INNER JOIN estabelecimento e 
+												on e.id_estabelecimento = pe.id_estabelecimento";
+									$qr = mysql_query($sql) or die(mysql_erro());
+									if($ln = mysql_fetch_array($qr, MYSQLI_ASSOC)){
+										
+									?>
+									<td class="center"> <?php echo $ln['nome_produto']; ?></td>
+									<td class="center"> <?php echo $ln['preco_produto'];?></td>
+									<?php }?></td>
 								<td class="center">
 									<a class="btn btn-danger" href="excluir.php?id=<?php echo $ObjOrcamento->getId();?>"onClick="return confirm('Deseja realmente apagar este registo?')";>
 										<i class="icon-trash icon-white"></i> 
