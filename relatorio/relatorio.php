@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
 <head>
 	<meta charset="utf-8">
-	<title>Estabelecimento</title>
+	<title>Or&ccedil;amento</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!-- The styles -->
@@ -31,21 +31,15 @@
 	<link href='../estrutura/css/jquery.iphone.toggle.css' rel='stylesheet'>
 	<link href='../estrutura/css/opa-icons.css' rel='stylesheet'>
 	<link href='../estrutura/css/uploadify.css' rel='stylesheet'>
-
+	
 </head>
-
 <body>
 		<!-- topbar starts -->
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<a class="brand" href="index.html"> <span>Or&ccedil;amento</span></a>
-				
+				<a class="brand" href=""><span>Or&ccedil;amento</span></a>
+					
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -59,8 +53,7 @@
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
-				
-				</div>
+			</div>
 		</div>
 	</div>
 	<!-- topbar ends -->
@@ -79,14 +72,13 @@
 						<li><a class="ajax-link" href="../estabelecimento/exibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
 						<li><a class="ajax-link" href="frmCompras.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
 						<li><a class="ajax-link" href="frmOrcamento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
-						<li><a class="ajax-link" href="frmRelatorio.html"><i class="icon-edit"></i><span class="hidden-tablet"> Rela&oacute;rio</span></a></li>
+						<li><a class="ajax-link" href="../relatorio/relatorio.php"><i class="icon-edit"></i><span class="hidden-tablet"> Relat&oacute;rio</span></a></li>
 						<li><a href="../login/index.php"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
 					</ul>
-					
-				</div>
+				</div><!--/.well -->
 			</div><!--/span-->
 			<!-- left menu ends -->
-			
+					
 			<div id="content" class="span10">
 			<!-- content starts -->
 			
@@ -96,136 +88,31 @@
 					<li>
 						<a href="#">Home</a> <span class="divider">/</span>
 					</li>
-					
 					<li>
-						<a href="#">Estabelecimento</a>
+						<a href="#">Relat&oacute;rios</a>
 					</li>
-					
 				</ul>
 			</div>
 			
-			<div class="row-fluid sortable">
+			<div class="row-fluid sortable">		
 				<div class="box span12">
-					<div class="box-header well" data-original-title>
-						<h2><i class="icon-edit"></i> Formul&aacute;rio de Cadastro</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
-					</div>
-					<?php
-					require_once 'repositorioEstabelecimento.php';
-					$id = $_GET['id'];
-					$retornoobjEstabelecimento = RepositorioEstabelecimento::getInstancia()->visualizar($id);
-					foreach($retornoobjEstabelecimento as $objEstabelecimento)
-					{
-
-					?>
+					
 					<div class="box-content">
-						<form class="form-horizontal" method="post" action = "alterarDados.php">
-						  <fieldset>
-							<legend>Estabelecimento</legend>
-							<h5>* Todos os campos s&otilde;o obrigat&oacute;rios</h5><br/>
-							
-							<input type="hidden" name="id" id="id" value="<?php echo $id;?>" />
-							
-							<div class="control-group">
-							  <label class="control-label" for="nomeFantasia">Nome Fantasia: </label>
-							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="nomeFantasia" required value = "<?php echo utf8_encode($objEstabelecimento->getNomeFantasia());?>">
-							 </div>
-							</div>
-							
-							<div class="control-group">
-							  <label class="control-label" for="razaoSocial">Raz&atilde;o Social: </label>
-							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="razaoSocial" required value = "<?php echo utf8_encode($objEstabelecimento->getRazaoSocial());?>">
-							 </div>
-							</div>
-							
-							<div class="control-group">
-							  <label class="control-label" for="logradouro">Logradouro: </label>
-							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="logradouro" required value = "<?php echo utf8_encode($objEstabelecimento->getLogradouro());?>" >
-							 </div>
-							</div>
-							
-							<div class="control-group">
-							  <label class="control-label" for="numero">N&uacute;mero: </label>
-							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="numero" required value = "<?php echo $objEstabelecimento->getNumero();?>">
-							 </div>
-							</div>
-							
-							<div class="control-group">
-							  <label class="control-label" for="complemento">Complemento: </label>
-							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="complemento" value = "<?php echo utf8_encode($objEstabelecimento->getComplemento());?>">
-							 </div>
-							</div>
-							
-							<div class="control-group">
-							  <label class="control-label" for="bairro">Bairro: </label>
-							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="bairro" required value = "<?php echo utf8_encode($objEstabelecimento->getBairro());?>">
-							 </div>
-							</div>
-														
-							<div class="control-group">
-							  <label class="control-label" for="cidade">Cidade: </label>
-							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name = "cidade" required value = "<?php echo utf8_encode($objEstabelecimento->getCidade());?>">
-							 </div>
-							</div>
-							
-							<div class="control-group">
-							<label class="control-label" for="estado">UF </label>
-							<div class="controls">
-							  <select id="selectError" data-rel="chosen" name="estado" required value = "<?php echo $objEstabelecimento->getEstado();?>">
-								<option>AC</option>
-								<option>AL</option>
-								<option>AP</option>
-								<option>AM</option>
-								<option>BA</option>
-								<option>CE</option>
-								<option>DF</option>
-								<option>ES</option>
-								<option>GO</option>
-								<option>MA</option>
-								<option>MT</option>
-								<option>MS</option>
-								<option>MG</option>
-								<option>PA</option>
-								<option>PB</option>
-								<option Selected>PE</option>
-								<option>PI</option>
-								<option>RJ</option>
-								<option>RN</option>
-								<option>RS</option>
-								<option>RO</option>
-								<option>RR</option>
-								<option>SC</option>
-								<option>SP</option>
-								<option>SE</option>
-								<option>TO</option>							
-							  </select>
-							  
-							  </div>
-						  <?php
-								}
-						  ?>
-							<div class="form-actions">
-							  <button type="submit" class="btn btn-primary">Salvar</button>
-							  <button type="reset" class="btn">Cancelar</button>
-							</div>
-						</div>
-						</fieldset>
-						</form>  						  
-					</div>
-				</div>
-			</div>
+						<a class="btn btn-info" href="relatorioProdutoEstabelecimento.php">Produto Estabelecimento</a>
 						
+					              
+					</div>
+				</div><!--/span-->
+			
+			</div><!--/row-->
+					
+			</div><!--/#content.span10-->
+		</div><!--/fluid-row-->
+				
+	
+
+	</div><!--/.fluid-container-->
+
 	<!-- external javascript
 	================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -297,71 +184,9 @@
 	<script src="../estrutura/js/jquery.uploadify-3.1.min.js"></script>
 	<!-- history.js for cross-browser state change on ajax -->
 	<script src="../estrutura/js/jquery.history.js"></script>
+	<!-- application script for Charisma demo -->
+	<!--<script src="js/charisma.js"></script>-->
 	
-	
-	<form onsubmit="return valida(this);">
-
-<script>
-function valdia(form)
-{ //verificar o tamanho dos campos
-	if(form.nomeFantasia.Value=="" || form.nomefantasia.Value.length <=60)
-	{
-		alert("Preencha o nome fantasia do estabelecimento corretamente");
-		form.nomeFantasia.focus();
-		return false;
-	}
-	
-	if(form.razaoSocial.Value=="" || form.razaoSocial.Value.length <=60 )
-	{
-		alert("Preencha a razão Social corretamente");
-		form.razaoSocial.focus();
-		return false;
-	}
-	
-	if(form.logradouro.Value=="" || form.logradouro.Value.length <=70)
-	{
-		alert("Preencha o logradouro corretamente");
-		form.razaoSocial.focus();
-		return false;
-	}
-	
-	if(!IsNum(form.numero.Value) || form.numero.Value.length <=6)
-	{
-		//lembrar no formulario de colocar o campo numero com não obrigatorio
-		alert("Informe apenas número");
-		form.numero.focus();
-		return false;
-	}
-	
-	if(form.complemento.Value.lenght <=70)
-	{
-		alert("O campo complemento não ultrapasse 70 caracteres");
-		form.bairro.focus();
-		return false;
-	}
-	
-	if(form.bairro.Value=="" || form.bairro.Value.lenght <=70)
-	{
-		alert("Preencha o nome do bairro corretamente");
-		form.bairro.focus();
-		return false;
-	}
-	
-	if(form.cidade.Value=="" || form.cidade.Value.lenght <=70)
-	{
-		alert("Preencha o nome da cidade corretamente");
-		form.cidade.focus();
-		return false;
-	}
-	
-	if(form.estado.Value=="" || form.estado.Value.lenght <=2)
-	{
-		alert("Preencha o nome do estado corretamente");
-		form.cidade.focus();
-		return false;
-	}
-}
-</script>
 		
 </body>
 </html>

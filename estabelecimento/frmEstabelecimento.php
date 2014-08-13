@@ -284,7 +284,69 @@
 	<script src="../estrutura/js/jquery.uploadify-3.1.min.js"></script>
 	<!-- history.js for cross-browser state change on ajax -->
 	<script src="../estrutura/js/jquery.history.js"></script>
-	<!-- application script for Charisma demo -->
-	<!--<script src="../estrutura/js/charisma.js"></script>-->
+	
+	<form onsubmit="return valida(this);">
+
+<script>
+function valdia(form)
+{ //verificar o tamanho dos campos
+	if(form.nomeFantasia.Value=="" || form.nomefantasia.Value.length <=60)
+	{
+		alert("Preencha o nome fantasia do estabelecimento corretamente");
+		form.nomeFantasia.focus();
+		return false;
+	}
+	
+	if(form.razaoSocial.Value=="" || form.razaoSocial.Value.length <=60 )
+	{
+		alert("Preencha a razão Social corretamente");
+		form.razaoSocial.focus();
+		return false;
+	}
+	
+	if(form.logradouro.Value=="" || form.logradouro.Value.length <=70)
+	{
+		alert("Preencha o logradouro corretamente");
+		form.razaoSocial.focus();
+		return false;
+	}
+	
+	if(!IsNum(form.numero.Value) || form.numero.Value.length <=6)
+	{
+		//lembrar no formulario de colocar o campo numero com não obrigatorio
+		alert("Informe apenas número");
+		form.numero.focus();
+		return false;
+	}
+	
+	if(form.complemento.Value.lenght <=70)
+	{
+		alert("O campo complemento não ultrapasse 70 caracteres");
+		form.bairro.focus();
+		return false;
+	}
+	
+	if(form.bairro.Value=="" || form.bairro.Value.lenght <=70)
+	{
+		alert("Preencha o nome do bairro corretamente");
+		form.bairro.focus();
+		return false;
+	}
+	
+	if(form.cidade.Value=="" || form.cidade.Value.lenght <=70)
+	{
+		alert("Preencha o nome da cidade corretamente");
+		form.cidade.focus();
+		return false;
+	}
+	
+	if(form.estado.Value=="" || form.estado.Value.lenght <=2)
+	{
+		alert("Preencha o nome do estado corretamente");
+		form.cidade.focus();
+		return false;
+	}
+}
+</script>
 </body>
 </html>
