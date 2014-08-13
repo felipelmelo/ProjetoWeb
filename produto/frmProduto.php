@@ -175,12 +175,12 @@
 							 </div>
 							</div>
 
-							<div class="control-group">
+							<!-- <div class="control-group">
 							  <label class="control-label" for="typeahead">Teste: </label>
 							  <div class="controls">
 								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" >
 							 </div>
-							</div>
+							</div> -->
 
 							<divclass="control-group">
 							<label class="control-label" for="typeahead">Categoria:</label>
@@ -200,8 +200,14 @@
 								?>
 								</select>
 							</div>
+
+							<div>
+								<a href="frmCadaProdEstab.php">cadastre o preço</a>
 							</div>
-							
+
+				</div> <!-- fecha div container -->
+
+							<br /><br />
 							<div class="form-actions">
 							  <button type="submit" class="btn btn-primary">Salvar</button>
 							  <button type="reset" class="btn">Cancelar</button>

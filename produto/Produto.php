@@ -9,10 +9,12 @@ class Produto {
 	private $especificacao_prod;
 	private $data_prod;
 	private $id_categoria;
+	private $id_estabelecimento;
+	private $preco;
 	
 	function __construct($id = null, $nome_produto = null, 
 		$fabricante_produto = null, $especificacao_prod = null, 
-		$data_prod = null, $id_categoria = null)
+		$data_prod = null, $id_categoria = null, $id_estabelecimento = null, $preco = null)
 	{
 		$this->id = $id;
 		$this->nome_produto = $nome_produto;
@@ -20,6 +22,8 @@ class Produto {
 		$this->especificacao_prod = $especificacao_prod;
 		$this->data_prod = $data_prod;
 		$this->id_categoria = $id_categoria;
+		$this->id_estabelecimento = $id_estabelecimento;
+		$this->preco = $preco;
 
 	}
 
@@ -29,6 +33,22 @@ class Produto {
 
 	function getId(){
 		return $this->id;
+	}
+
+	function setIdEstab($id_estabelecimento){
+		$this->id_estabelecimento = $id_estabelecimento;
+	}
+
+	function getIdEstab(){
+		return $this->id_estabelecimento;
+	}
+
+	function setPreco($preco){
+		$this->preco = $preco;
+	}
+
+	function getPreco(){
+		return $this->preco;
 	}
 
 	function setNomeProd($nome_produto){

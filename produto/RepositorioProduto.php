@@ -63,6 +63,29 @@ class RepositorioProduto {
 		}
 	}
 
+	public function inserirProdEstab($id_produto, $id_estabelecimento, $preco){
+
+		try {
+			
+			$objProdutoEstab = new Produto($id_produto, $id_estabelecimento, $preco);
+			$query = "INSERT INTO produto_has_estabelecimento (id_produto, id_estabelecimento, preco_produto)
+						VALUES (:id_produto, :id_estabelecimento, :preco) ";
+
+			$this->stm = $this->conn->prepare($query);
+			$this->stm->bindValue(":id_produto", $objProdutoEstab->getId());
+			$this->stm->bindValue(":id_estabelecimento", $objProdutoEstab->getIdEstab());
+			$this->stm->bindValue(":preco", $objProdutoEstab->getPreco());
+
+			$this->stm->execute();
+
+			//header("Location: listar.php");
+
+
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
+	}
+
 	public function alterar($id,$nome_produto,$fabricante_produto,$especificacao_prod,$data_prod,$id_categoria)
 	{
 		try
