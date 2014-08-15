@@ -26,9 +26,6 @@ if(!empty($razaoSocial))
 				window.location.href = \"frmEstabelecimento.php\";	
 				</script>";
 	}
-}
-
-
 
 echo $Estabelecimento;
 

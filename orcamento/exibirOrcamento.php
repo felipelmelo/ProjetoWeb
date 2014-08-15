@@ -68,11 +68,11 @@
 						<li><a class="ajax-link" href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> Home</span></a></li>
 						<li><a class="ajax-link" href="../usuario/exibirUsuario.php"><i class="icon-edit"></i><span class="hidden-tablet"> Usu&aacute;rio</span></a></li>
 						<li><a class="ajax-link" href="../categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
-						<li><a class="ajax-link" href="frmProduto.html"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
+						<li><a class="ajax-link" href="../produto/exibirProduto.php"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
 						<li><a class="ajax-link" href="../estabelecimento/exibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
-						<li><a class="ajax-link" href="frmCompras.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
+						<li><a class="ajax-link" href="../compras/frmCompras.php"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
 						<li><a class="ajax-link" href="../orcamento/exibirOrcamento.php"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
-						<li><a class="ajax-link" href="frmRelatorio.html"><i class="icon-edit"></i><span class="hidden-tablet"> Rela&oacute;rio</span></a></li>
+						<li><a class="ajax-link" href="../relatorio/relatorio.php"><i class="icon-edit"></i><span class="hidden-tablet"> Relat&oacute;rio</span></a></li>
 						<li><a href="../login/index.php"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
 					</ul>
 				</div><!--/.well -->
@@ -110,10 +110,11 @@
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
+								
 								  <th>Quantidade de produtos</th>
 								  <th>Produto</th>
 								  <th>Estabelecimento<th>
-								  <th>A&ccedil;&atilde;o</th>
+								 <th>Preço Total<th>
 							  </tr>
 						  </thead>   
 						  <tbody>
@@ -140,26 +141,34 @@
 									}
 									
 									?></td>
-									<?php 
+								
 									
-									mysql_connect("localhost","root","");
-									mysql_select_db("orcamento");
-
-									$sql = "SELECT p.nome_produto,
-										   min(pe.preco_produto) as preco_produto,
-										   e.nome_fantasia_estabelecimento
-											FROM produto_has_estabelecimento pe
-											INNER JOIN produto p
+							<?php $retorno = null;
+								$sqlRelProdutoEstabelecimento = "SELECT p.nome_produto,
+												    pe.preco_produto,
+											    	 e.nome_fantasia_estabelecimento as nome
+				   
+												FROM produto_has_estabelecimento pe
+												INNER JOIN produto p
 												on p.id_produto = pe.id_produto
-											INNER JOIN estabelecimento e 
-												on e.id_estabelecimento = pe.id_estabelecimento";
-									$qr = mysql_query($sql) or die(mysql_erro());
-									if($ln = mysql_fetch_array($qr, MYSQLI_ASSOC)){
-										
-									?>
-									<td class="center"> <?php echo $ln['nome_produto']; ?></td>
-									<td class="center"> <?php echo $ln['preco_produto'];?></td>
-									<?php }?></td>
+												inner join estabelecimento e 
+												on e.id_estabelecimento = pe.id_estabelecimento limit 1";
+												require_once ('../Conexao/ConexaoPDO.php');
+												
+												$conn = ConexaoPDO::getInstancia()->getDb();
+												$stm = $conn->prepare($sqlRelProdutoEstabelecimento);
+												$stm->execute();
+												
+												while ($result = $stm->fetch(PDO::FETCH_ASSOC))
+												{
+												?>
+													<td><?php echo $result['nome']; ?></td>
+													<td><?php echo $result['preco_produto'];?></td>
+													
+													<td><?php echo $ObjOrcamento->getQtd() * $result['preco_produto']; ?></td>
+													
+													<?php };?>
+									
 								<td class="center">
 									<a class="btn btn-danger" href="excluir.php?id=<?php echo $ObjOrcamento->getId();?>"onClick="return confirm('Deseja realmente apagar este registo?')";>
 										<i class="icon-trash icon-white"></i> 

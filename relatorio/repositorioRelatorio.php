@@ -21,9 +21,6 @@ class RepositorioRelatorio
 		return self::$instancia;
 	}
 	
-	public function retornaObjeto($array)
-	{							   
-	}
 	
 	public function relProdutoEstabelecimento()
 	{
@@ -38,22 +35,23 @@ class RepositorioRelatorio
 												INNER JOIN produto p
 												on p.id_produto = pe.id_produto
 												inner join estabelecimento e 
-												on e.id_estabelecimento = pe.id_estabelecimento
-												WHERE data_cadastro <= now()";
+												on e.id_estabelecimento = pe.id_estabelecimento";
 			
 			$this->stm = $this->conn->prepare($sqlRelProdutoEstabelecimento);
 			$this->stm->execute();
 			
 			while ($result = $this->stm->fetch(PDO::FETCH_ASSOC))
 			{
-				$retorno[] = $this->retornaObjeto($result);
-				
+			
+				$temp = array('nome_produto'=>$result['nome_produto'],'preco_produto'=>$result['preco_produto'],'nome_fantasia_estabelecimento'=>$result['nome_fantasia_estabelecimento']
+				);
+				$retorno[] = $temp;
 			}
 			return $retorno;
 		}
 		catch(PDOException $e)
 		{
-			throw new $e->getMessage(); 
+			echo "erro"; 
 		}
 	}	
 }	

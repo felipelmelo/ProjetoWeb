@@ -158,7 +158,7 @@ class RepositorioEstabelecimento
 		{
 			$retorno = null;
 			
-			$objEstabelecimento = new Estabelecimento(null, $razaoSocial);
+			$objEstabelecimento = new Estabelecimento(null,null,$razaoSocial,null,null,null,null,null,null);
 			
 			$sql = "SELECT * FROM estabelecimento WHERE  razao_social_estabelecimento like :razaoSocial";
 			
@@ -166,9 +166,9 @@ class RepositorioEstabelecimento
 			$this->stm->bindValue(":razaoSocial", $objEstabelecimento->getRazaoSocial());
 			$this->stm->execute();
 			
-			while($result = $this->stm-fetch(PDO::FETCH_ASSOC))
+			while($result = $this->stm->fetch(PDO::FETCH_ASSOC))
 			{
-				$retorno[] = $this->retornaObjeto($result);
+				$retorno[]=$this->retornaObjeto($result);
 			}
 			return $retorno;
 		

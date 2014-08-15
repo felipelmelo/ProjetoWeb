@@ -149,8 +149,6 @@
 	<!-- multiple file upload plugin -->
 	<script src="../estrutura/js/jquery.uploadify-3.1.min.js"></script>
 	<!-- history.js for cross-browser state change on ajax -->
-	<script src="../estrutura/js/jquery.history.js"></script>
-	<!-- application script for Charisma demo -->
 		
 </body>
 </html>

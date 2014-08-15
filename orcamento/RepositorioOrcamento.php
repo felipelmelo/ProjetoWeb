@@ -92,7 +92,7 @@
 		try{
 			$retorno = null;
 			
-			$sql = "select * from Orcamento_historico";
+			$sql = "select * from Orcamento_historico"; 
 			$this->stm = $this->conn->prepare($sql);
 			$this->stm->execute();
 			
@@ -105,30 +105,6 @@
 			echo "erro";
 		}
 	}
-	
-	public function vizualizar($id)
-	{
-		try{
-			$retorno = null;
-			
-			$objOrcamento = new Orcamento($id,null,null,null);
-			
-			$sql = "select * from Orcamento_historico where id_orcamento = :id";
-			
-			$this->stm = $this->conn->prepare($sql);
-			$this->stm->bindValue(":id", $objOrcamento->getId());
-			$this->stm->execute();
-			
-			while($result = $this->stm->fetch(PDO::FETCH_ASSOC)){
-				$retorno[]=$this->retornaObjeto($result);
-			}
-			return $retorno;
-			
-		}catch(PDOException $e){
-			echo "erro";
-		}
-	}
-	
-	
+		
 }
 	?>

@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!-- The styles -->
-	<link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
+	<link id="bs-css" href="../estrutura/css/bootstrap-cerulean.css" rel="stylesheet">
 	<style type="text/css">
 	  body {
 		padding-bottom: 40px;
@@ -15,31 +15,24 @@
 		padding: 9px 0;
 	  }
 	</style>
-	<link href="css/bootstrap-responsive.css" rel="stylesheet">
-	<link href="css/charisma-app.css" rel="stylesheet">
-	<link href="css/jquery-ui-1.8.21.custom.css" rel="stylesheet">
-	<link href='css/fullcalendar.css' rel='stylesheet'>
-	<link href='css/fullcalendar.print.css' rel='stylesheet'  media='print'>
-	<link href='css/chosen.css' rel='stylesheet'>
-	<link href='css/uniform.default.css' rel='stylesheet'>
-	<link href='css/colorbox.css' rel='stylesheet'>
-	<link href='css/jquery.cleditor.css' rel='stylesheet'>
-	<link href='css/jquery.noty.css' rel='stylesheet'>
-	<link href='css/noty_theme_default.css' rel='stylesheet'>
-	<link href='css/elfinder.min.css' rel='stylesheet'>
-	<link href='css/elfinder.theme.css' rel='stylesheet'>
-	<link href='css/jquery.iphone.toggle.css' rel='stylesheet'>
-	<link href='css/opa-icons.css' rel='stylesheet'>
-	<link href='css/uploadify.css' rel='stylesheet'>
+	<link href="../estruturacss/bootstrap-responsive.css" rel="stylesheet">
+	<link href="../estruturacss/charisma-app.css" rel="stylesheet">
+	<link href="../estruturacss/jquery-ui-1.8.21.custom.css" rel="stylesheet">
+	<link href='../estruturacss/fullcalendar.css' rel='stylesheet'>
+	<link href='../estruturacss/fullcalendar.print.css' rel='stylesheet'  media='print'>
+	<link href='../estruturacss/chosen.css' rel='stylesheet'>
+	<link href='../estruturacss/uniform.default.css' rel='stylesheet'>
+	<link href='../estruturacss/colorbox.css' rel='stylesheet'>
+	<link href='../estruturacss/jquery.cleditor.css' rel='stylesheet'>
+	<link href='../estruturacss/jquery.noty.css' rel='stylesheet'>
+	<link href='../estruturacss/noty_theme_default.css' rel='stylesheet'>
+	<link href='../estruturacss/elfinder.min.css' rel='stylesheet'>
+	<link href='../estruturacss/elfinder.theme.css' rel='stylesheet'>
+	<link href='../estruturacss/jquery.iphone.toggle.css' rel='stylesheet'>
+	<link href='../estruturacss/opa-icons.css' rel='stylesheet'>
+	<link href='../estruturacss/uploadify.css' rel='stylesheet'>
 
-	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-	<!-- The fav icon -->
-	<link rel="shortcut icon" href="img/favicon.ico">
-		
+			
 </head>
 
 <body>
@@ -53,20 +46,6 @@
 					<span class="icon-bar"></span>
 				</a>
 				<a class="brand" href="index.html"> <span>Or&ccedil;amento</span></a>
-				
-				<!-- theme selector starts -->
-				<div class="btn-group pull-right theme-container" >
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-tint"></i><span class="hidden-phone"> Change Theme / Skin</span>
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" id="themes">
-					
-						<li><a data-value="cerulean" href="#"><i class="icon-blank"></i> Cerulean</a></li>
-					
-					</ul>
-				</div>
-				<!-- theme selector ends -->
 				
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
@@ -95,13 +74,13 @@
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li class="nav-header hidden-tablet">Menu</li>
 						<li><a class="ajax-link" href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> Home</span></a></li>
-						<li><a class="ajax-link" href="frmUsuario.html"><i class="icon-edit"></i><span class="hidden-tablet"> Usu&aacute;rio</span></a></li>
-						<li><a class="ajax-link" href="frmCategoria.html"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
-						<li><a class="ajax-link" href="exibirProduto.php"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
-						<li><a class="ajax-link" href="frmEstabelecimento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
-						<li><a class="ajax-link" href="frmCompras.html"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
-						<li><a class="ajax-link" href="frmOrcamento.html"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
-						<li><a class="ajax-link" href="frmRelatorio.html"><i class="icon-edit"></i><span class="hidden-tablet"> Rela&oacute;rio</span></a></li>
+						<li><a class="ajax-link" href="../usuario/exibirUsuario.php"><i class="icon-edit"></i><span class="hidden-tablet"> Usu&aacute;rio</span></a></li>
+						<li><a class="ajax-link" href="../categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
+						<li><a class="ajax-link" href="../produto/exibirProduto.php"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
+						<li><a class="ajax-link" href="../estabelecimento/ExibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
+						<li><a class="ajax-link" href="../compras/frmCompras.php"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
+						<li><a class="ajax-link" href="../orcamento/orcamento.php"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
+						<li><a class="ajax-link" href="../relatorio/relatorio.php"><i class="icon-edit"></i><span class="hidden-tablet"> Relat&oacute;rio</span></a></li>
 						<li><a href="login.html"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
 					</ul>
 					
