@@ -77,7 +77,6 @@
 						<li><a class="ajax-link" href="../categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
 						<li><a class="ajax-link" href="../produto/exibirProduto.php"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
 						<li><a class="ajax-link" href="../estabelecimento/exibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
-						<li><a class="ajax-link" href="../compras/frmCompras.php"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
 						<li><a class="ajax-link" href="../orcamento/ExibirOrcamento.php"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
 						<li><a class="ajax-link" href="../relatorio/relatorio.php"><i class="icon-edit"></i><span class="hidden-tablet"> Relat&oacute;rio</span></a></li>
 						<li><a href="login.html"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
@@ -147,10 +146,10 @@
 							 </div>
 							</div>
 
-							<divclass="control-group">
+						 <divclass="control-group">
 							<label class="control-label" for="typeahead">Categoria:</label>
 							<div class="controls">
-								<select id="id_categoria" name="id_categoria" required style="width:375px;" tabindex="4">
+								<select name = "id_categoria"  class="selectpicker span6">
 								<option value="">Selecione uma categoria</option>
 								
 									<?php 
@@ -160,7 +159,7 @@
 										$intIdCategoria = $objCategoria->getId();
 										$strNomeCategoria = $objCategoria->getNome();
 										
-										echo '<option value="' . $intIdCategoria . '">' . $strNomeCategoria . '</option>';
+										echo '<option value="' . $intIdCategoria . '">' . utf8_encode($strNomeCategoria) . '</option>';
 										}
 								?>
 								</select>

@@ -4,7 +4,7 @@
 	$tipo = $_SESSION["Login"]['tipo_usuario'];
 	if($validar){
 		
-			header("Location: ../indexP.php");
+			header("Location:../");
 		
 	}
 ?>

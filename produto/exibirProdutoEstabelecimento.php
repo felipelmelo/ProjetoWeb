@@ -93,8 +93,8 @@
 				</ul>
 			</div>
 			<?php 
-			include_once 'repositorioRelatorio.php';
-			$retornoObjRelatorio = RepositorioRelatorio::getInstancia()->relProdutoEstabelecimento();
+			include_once '../Produto/repositorioProduto.php';
+			$retornoObjProduto = RepositorioProduto::getInstancia()->ProdutoEstabelecimento();
 			
 			
 			?>
@@ -104,18 +104,31 @@
 						  <thead>
 							  <tr>
 								  <th>Nome do Produto</th>
-								  <th>Pre&ccedil;o</th>
 								  <th>Estabelecimento</th>
+								  <th>Pre&ccedil;o</th>
+								  <th>A&ccedil;&atilde;o</th>
 							  </tr>
 						  </thead>
 					<?php 
-						foreach ($retornoObjRelatorio as $ObjRelatorio){
-					?>	
-					<tr>
-						<td class="center"><?php echo utf8_encode($ObjRelatorio['nome_produto']); ?></td>
-						<td class="center"><?php echo utf8_encode($ObjRelatorio['preco_produto']); ?></td>
-						<td class="center"><?php echo utf8_encode($ObjRelatorio['nome_fantasia_estabelecimento']); ?></td>
-					<tr>
+						foreach ($retornoObjProduto as $ObjProduto){
+					?>	<tr>
+						<td class="center"><?php echo utf8_encode($ObjProduto['nome_produto']); ?></td>
+						<td class="center"><?php echo utf8_encode($ObjProduto['nome_fantasia_estabelecimento']); ?></td>
+						<td class="center"><?php echo utf8_encode($ObjProduto['preco_produto']); ?></td>
+						
+						<td class="center">
+									<a class="btn btn-info" href="frmProdutoAlterarPreco.php?idProduto=<?php echo $ObjProduto['id_Produto'];?>&idEstabelecimento=<?php echo $ObjProduto['id_Estabelecimento'];?>">
+										<i class="icon-edit icon-white"></i>  
+										Alterar                                            
+									</a>
+									<a class="btn btn-danger" href="excluirProdutoPreco.php?idProduto=<?php echo $ObjProduto['id_Produto'];?>&idEstabelecimento=<?php echo $ObjProduto['id_Estabelecimento'];?>"
+									
+									onClick="return confirm('Deseja realmente apagar este registo?')";>
+										<i class="icon-trash icon-white"></i> 
+										Excluir
+									</a>
+								</td>
+					 </tr>
 					<?php
 					}?>
 					</table>

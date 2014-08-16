@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
 	<meta charset="utf-8">
-	<title>Or&ccedil;amento</title>
+	<title>Alterar Produto</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!-- The styles -->
@@ -31,15 +31,23 @@
 	<link href='../estrutura/css/jquery.iphone.toggle.css' rel='stylesheet'>
 	<link href='../estrutura/css/opa-icons.css' rel='stylesheet'>
 	<link href='../estrutura/css/uploadify.css' rel='stylesheet'>
-	
+
+			
 </head>
+
 <body>
 		<!-- topbar starts -->
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
-				<a class="brand" href=""><span>Or&ccedil;amento</span></a>
-					
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="index.html"> <span>Or&ccedil;amento</span></a>
+				
+				
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -53,7 +61,8 @@
 					</ul>
 				</div>
 				<!-- user dropdown ends -->
-			</div>
+				
+				</div>
 		</div>
 	</div>
 	<!-- topbar ends -->
@@ -65,19 +74,28 @@
 				<div class="well nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li class="nav-header hidden-tablet">Menu</li>
-						<li><a class="ajax-link" href="../index.html"><i class="icon-home"></i><span class="hidden-tablet"> Home</span></a></li>
+						<li><a class="ajax-link" href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> Home</span></a></li>
 						<li><a class="ajax-link" href="../usuario/exibirUsuario.php"><i class="icon-edit"></i><span class="hidden-tablet"> Usu&aacute;rio</span></a></li>
 						<li><a class="ajax-link" href="../categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
 						<li><a class="ajax-link" href="../produto/exibirProduto.php"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
 						<li><a class="ajax-link" href="../estabelecimento/exibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
+						<li><a class="ajax-link" href="../compras/frmCompras.php"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
 						<li><a class="ajax-link" href="../orcamento/exibirOrcamento.php"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
 						<li><a class="ajax-link" href="../relatorio/relatorio.php"><i class="icon-edit"></i><span class="hidden-tablet"> Relat&oacute;rio</span></a></li>
 						<li><a href="../login/index.php"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
 					</ul>
-				</div><!--/.well -->
+					
+				</div>
 			</div><!--/span-->
 			<!-- left menu ends -->
-					
+			
+			<noscript>
+				<div class="alert alert-block span10">
+					<h4 class="alert-heading">Warning!</h4>
+					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+				</div>
+			</noscript>
+			
 			<div id="content" class="span10">
 			<!-- content starts -->
 			
@@ -88,51 +106,71 @@
 						<a href="#">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Relat&oacute;rios</a>
+						<a href="#">Produto</a>
 					</li>
 				</ul>
 			</div>
-			<?php 
-			include_once 'repositorioRelatorio.php';
-			$retornoObjRelatorio = RepositorioRelatorio::getInstancia()->relProdutoEstabelecimento();
 			
-			
-			?>
-			<div class="row-fluid sortable">		
+			<div class="row-fluid sortable">
 				<div class="box span12">
-					<table class="table table-striped table-bordered bootstrap-datatable datatable">
-						  <thead>
-							  <tr>
-								  <th>Nome do Produto</th>
-								  <th>Pre&ccedil;o</th>
-								  <th>Estabelecimento</th>
-							  </tr>
-						  </thead>
-					<?php 
-						foreach ($retornoObjRelatorio as $ObjRelatorio){
-					?>	
-					<tr>
-						<td class="center"><?php echo utf8_encode($ObjRelatorio['nome_produto']); ?></td>
-						<td class="center"><?php echo utf8_encode($ObjRelatorio['preco_produto']); ?></td>
-						<td class="center"><?php echo utf8_encode($ObjRelatorio['nome_fantasia_estabelecimento']); ?></td>
-					<tr>
-					<?php
-					}?>
-					</table>
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-edit"></i> Formul&aacute;rio altera&ccedil;&atilde;o de Produto</h2>
+						<div class="box-icon">
+							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+							<?php require_once 'RepositorioProduto.php';	
+									$idProduto = $_GET['idProduto'];
+									$idEstabelecimento = $_GET['idEstabelecimento'];
+									
+									$retornaObjeto = RepositorioProduto::getInstancia()->visualizarProdutoPreco($idProduto,$idEstabelecimento);
+									
+						   			 foreach($retornaObjeto as $objProduto){
+								?>	
+					<div class="box-content">
+						<form class="form-horizontal" method="post" action="trataAlterarPreco.php">
+						  <fieldset>
+							<legend>Produto e Estabelecimento</legend>
+							<h5>* Todos os campos s&otilde;o obrigat&oacute;rios</h5><br/>
+							
+							<input type="hidden" name="idProduto" id="idProduto" value="<?php echo $idProduto;?>" />	
+							<input type="hidden" name="idEstabelecimento" id="idEstabelecimento" value="<?php echo $idEstabelecimento;?>" />	
+							
+							 <div class="control-group">
+							  <label class="control-label" for="nome">Nome do Produto: </label>
+							  <div class="controls">
+								<?php echo utf8_encode($objProduto['nome_produto']); ?>
+								</div>
+							  </div>
+							
+							 <div class="control-group">
+							  <label class="control-label" for="fabricante">Estabelecimento: </label>
+							  <div class="controls">
+									<?php echo utf8_encode($objProduto['nome_fantasia_estabelecimento']); ?></td>	
+								</div>
+							</div>
+							
+							  <div class="control-group">
+							  <label class="control-label" for="preco">Pre&ccedil;o: </label>
+							  <div class="controls">
+								<input type="text" name = "preco" class="span6 typeahead" id="typeahead" value = "<?php echo utf8_encode($objProduto['preco_produto']); ?>" data-provide="typeahead" data-items="4" />
+							 </div>
+							</div>
+							
+							<?php }?>						
+							<div class="form-actions">
+							  <button type="submit" class="btn btn-primary">Salvar</button>
+							  <button type="reset" class="btn">Cancelar</button>
+							</div>
+						  </fieldset>
+						</form>   
 
-										
-					              
-					
+					</div>
 				</div><!--/span-->
-			
-			</div><!--/row-->
-					
-			</div><!--/#content.span10-->
-		</div><!--/fluid-row-->
-				
-	
 
-	</div><!--/.fluid-container-->
+			</div><!--/row-->
 
 	<!-- external javascript
 	================================================== -->
@@ -207,7 +245,6 @@
 	<script src="../estrutura/js/jquery.history.js"></script>
 	<!-- application script for Charisma demo -->
 	<!--<script src="js/charisma.js"></script>-->
-	
-		
+
 </body>
 </html>

@@ -79,7 +79,6 @@
 						<li><a class="ajax-link" href="../categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
 						<li><a class="ajax-link" href="../produto/exibirProduto.php"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
 						<li><a class="ajax-link" href="../estabelecimento/exibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
-						<li><a class="ajax-link" href="../compras/frmCompras.php"><i class="icon-edit"></i><span class="hidden-tablet">Compras</span></a></li>
 						<li><a class="ajax-link" href="../orcamento/exibirOrcamento.php"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
 						<li><a class="ajax-link" href="../relatorio/relatorio.php"><i class="icon-edit"></i><span class="hidden-tablet"> Relat&oacute;rio</span></a></li>
 						<li><a href="../login/index.php"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
@@ -124,7 +123,8 @@
 							<?php require_once 'RepositorioProduto.php';	
 									$id = $_GET['id'];
 									$retornaObjeto = RepositorioProduto::getInstancia()->visualizar($id);
-									
+									//var_dump($retornaObjeto);
+									//die();
 						   			 foreach($retornaObjeto as $objProduto){
 								?>	
 					<div class="box-content">
@@ -155,7 +155,30 @@
 								<input type="text" name = "especificacao" class="span6 typeahead" id="typeahead" value = "<?php echo utf8_encode($objProduto->getEspecificacaoProd());?>" data-provide="typeahead" data-items="4" />
 							 </div>
 							</div>
-							
+							 <div class="control-group">
+							  <label class="control-label" for="typeahead">Categoria: </label>
+							  <div class="controls">
+								<select id="id_categoria span6"  name="id_categoria" required style="width:440px;" tabindex="4">
+								
+								
+									<?php 
+										require_once '../categoria/RepositorioCategoria.php';
+										$retornoObjCategoria = RepositorioCategoria::getInstancia()->listar();		
+										foreach ($retornoObjCategoria as $objCategoria){
+										$intIdCategoria = $objCategoria->getId();
+										$strNomeCategoria = $objCategoria->getNome();
+										
+										if($objProduto->getIdCategoria() == $objCategoria->getId()){
+											$selected = 'selected="selected"';
+										}else{
+											$selected = '';
+										}
+										
+										echo '<option value="' . $intIdCategoria . '">' . utf8_encode($strNomeCategoria) . '</option>';
+										}
+								?>
+								</select>
+							</div>
 							<?php }?>						
 							<div class="form-actions">
 							  <button type="submit" class="btn btn-primary">Salvar</button>
