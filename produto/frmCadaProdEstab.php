@@ -73,12 +73,12 @@
 				<div class="well nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
 						<li class="nav-header hidden-tablet">Menu</li>
-						<li><a class="ajax-link" href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> Home</span></a></li>
+						<li><a class="ajax-link" href="../index.html"><i class="icon-home"></i><span class="hidden-tablet"> Home</span></a></li>
 						<li><a class="ajax-link" href="../usuario/exibirUsuario.php"><i class="icon-edit"></i><span class="hidden-tablet"> Usu&aacute;rio</span></a></li>
 						<li><a class="ajax-link" href="../categoria/exibirCategoria.php"><i class="icon-edit"></i><span class="hidden-tablet"> Categoria</span></a></li>
 						<li><a class="ajax-link" href="../produto/exibirProduto.php"><i class="icon-edit"></i><span class="hidden-tablet"> Produto</span></a></li>
 						<li><a class="ajax-link" href="../estabelecimento/ExibirDados.php"><i class="icon-edit"></i><span class="hidden-tablet"> Estabelecimento</span></a></li>
-						<li><a class="ajax-link" href="../orcamento/orcamento.php"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
+						<li><a class="ajax-link" href="../orcamento/exibirOrcamento.php"><i class="icon-edit"></i><span class="hidden-tablet"> Or&ccedilamento</span></a></li>
 						<li><a class="ajax-link" href="../relatorio/relatorio.php"><i class="icon-edit"></i><span class="hidden-tablet"> Relat&oacute;rio</span></a></li>
 						<li><a href="login.html"><i class="icon-lock"></i><span class="hidden-tablet">Sair</span></a></li>
 					</ul>
@@ -146,7 +146,7 @@
 										$intIdProduto = $objProduto->getId();
 										$strNomeProduto = $objProduto->getNomeProd();
 										
-										echo '<option value="' . $intIdProduto . '">' . $strNomeProduto . '</option>';
+										echo '<option value="' . $intIdProduto . '">' . utf8_encode($strNomeProduto) . '</option>';
 										}
 								?>
 								</select>
@@ -166,7 +166,7 @@
 										$idEstab = $objEstab->getId();
 										$nomeEstab = $objEstab->getNomeFantasia();
 										
-										echo '<option value="' . $idEstab . '">' . $nomeEstab . '</option>';
+										echo '<option value="' . $idEstab . '">' . utf8_encode($nomeEstab) . '</option>';
 										}
 								?>
 								</select>

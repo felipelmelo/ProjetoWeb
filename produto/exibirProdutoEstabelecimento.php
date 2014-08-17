@@ -88,7 +88,7 @@
 						<a href="#">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Relat&oacute;rios</a>
+						<a href="#">Produto/ Estabelecimento</a>
 					</li>
 				</ul>
 			</div>
@@ -100,6 +100,11 @@
 			?>
 			<div class="row-fluid sortable">		
 				<div class="box span12">
+				<div class="box-header well" data-original-title>
+					
+					<a class="btn btn-success" href="frmCadaProdEstab.php"><i class="icon-plus icon-white"></i>Cadastro</a> 
+											
+					</div>
 					<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>

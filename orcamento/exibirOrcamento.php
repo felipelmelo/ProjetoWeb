@@ -101,7 +101,7 @@
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
 					
-					<a class="btn btn-success" href="frmOrcamento.php"><i class="icon-plus icon-white"></i>Cadastrar</a> 
+					<a class="btn btn-success" href="frmOrcamento.php"><i class="icon-plus icon-white"></i>Novo Or&ccedil;amento</a> 
 											
 					</div>
 	
@@ -161,8 +161,8 @@
 												while ($result = $stm->fetch(PDO::FETCH_ASSOC))
 												{
 												?>
-													<td><?php echo $result['nome']; ?></td>
-													<td><?php echo $result['preco_produto'];?></td>
+													<td><?php echo utf8_encode($result['nome']); ?></td>
+													<td><?php echo utf8_encode($result['preco_produto']);?></td>
 													
 													<td><?php echo $ObjOrcamento->getQtd() * $result['preco_produto']; ?></td>
 													

@@ -4,7 +4,7 @@
 
 	
 	$nome = strtolower($_POST['nome']); 
-	if(!is_numeric(nome) || $nome == ""){
+	if(!is_numeric($nome) || $nome == ""){
 		$Categoria = RepositorioCategoria::getInstancia()->VerificaCategoria(utf8_decode($nome));
 		if(!$Categoria){
 	
